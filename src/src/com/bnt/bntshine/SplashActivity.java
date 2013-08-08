@@ -10,7 +10,7 @@ import android.view.WindowManager;
 public class SplashActivity extends Activity {
 
 	private static String TAG = SplashActivity.class.getName();
-	private static long SLEEP_TIME = 3; // Temporary there is a time. In the
+	private static long SLEEP_TIME = 1; // Temporary there is a time. In the
 										// future we're going to use network
 										// data status
 

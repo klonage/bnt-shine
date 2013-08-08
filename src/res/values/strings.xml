@@ -6,5 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="trwa_wczytywanie_danych_">Trwa wczytywanie danych...</string>
+    <string name="ustawienia">USTAWIENIA</string>
+    <string name="harmonogram">HARMONOGRAM</string>
+    <string name="sceny">SCENY</string>
+    <string name="global_off">GLOBAL OFF</string>
 
 </resources>
