@@ -65,6 +65,7 @@
             android:layout_marginLeft="-4dip"
             android:layout_marginRight="-5dip"
             android:layout_weight="1"
+            android:onClick="doGlobalOffClick"
             android:text="@string/global_off"
             android:textSize="8sp" />
 

@@ -9,11 +9,14 @@ import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
-
+	private GlobalOffAction globalOff;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		init();
 	}
 
 	@Override
@@ -40,5 +43,15 @@ public class MainActivity extends Activity {
 	public void showSettingsActivityClick(View view) {
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
+	}
+	
+	public void doGlobalOffClick(View view) {
+		globalOff.doGlobalOff();
+	}
+	
+	private void init() {
+		globalOff = new GlobalOffAction(getApplicationContext(), this);
+		
+		//Button globalOffBtn = (Button);
 	}
 }
