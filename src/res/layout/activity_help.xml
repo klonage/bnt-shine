@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SettingsActivity" >
+    tools:context=".HelpActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -15,46 +15,40 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/namesButton"
+        <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/nazwy" />
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:src="@drawable/ic_launcher" 
+            android:contentDescription="@string/bnt_systems"/>
 
         <Button
-            android:id="@+id/profilesButton"
+            android:id="@+id/button1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/profile" />
+            android:text="@string/calc" />
 
         <Button
-            android:id="@+id/globalOffSettingsButton"
+            android:id="@+id/button2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/opcje_global_off" />
+            android:layout_weight="0"
+            android:text="@string/zadzwo_do_konsultanta" />
 
         <Button
-            android:id="@+id/networkSettingsButton"
+            android:id="@+id/button3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/ustawienia_sieciowe" />
+            android:layout_weight="0"
+            android:text="@string/wy_lij_mail" />
 
         <Button
-            android:id="@+id/helpButton"
+            android:id="@+id/button4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:onClick="showHelpActivityClick"
-            android:text="@string/pomoc" />
+            android:layout_weight="0"
+            android:text="@string/strona_www" />
 
     </LinearLayout>
 

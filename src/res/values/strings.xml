@@ -16,5 +16,11 @@
     <string name="opcje_global_off">OPCJE GLOBAL OFF</string>
     <string name="ustawienia_sieciowe">USTAWIENIA SIECIOWE</string>
     <string name="pomoc">POMOC</string>
+    <string name="title_activity_help">HelpActivity</string>
+    <string name="calc">CALC</string>
+    <string name="zadzwo_do_konsultanta">ZADZWOŃ DO KONSULTANTA</string>
+    <string name="wy_lij_mail">WYŚLIJ MAIL</string>
+    <string name="strona_www">STRONA WWW</string>
+    <string name="bnt_systems">BNT SYSTEMS</string>
 
 </resources>
