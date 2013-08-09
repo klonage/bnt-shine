@@ -30,5 +30,10 @@ public class SettingsActivity extends Activity {
 		Intent intent = new Intent(this, NetworkSettingsActivity.class);
 		startActivity(intent);
 	}
+	
+	public void showGlobalOffSettingsActivityClick(View view) {
+		Intent intent = new Intent(this, GlobalOffSettingsActivity.class);
+		startActivity(intent);
+	}
 
 }

@@ -29,5 +29,11 @@
     <string name="ip_">IP:</string>
     <string name="maska_">MASKA:</string>
     <string name="zmie_adres_sieciowy_filtra_faz">ZMIEŃ ADRES SIECIOWY FILTRA FAZ</string>
+    <string name="title_activity_global_off_settings">GlobalOffSettingsActivity</string>
+    <string name="wybierz_spos_b_autoryzacji_global_off">WYBIERZ SPOSÓB AUTORYZACJI GLOBAL OFF</string>
+    <string name="okienko_z_potwierdzeniem">OKIENKO Z POTWIERDZENIEM</string>
+    <string name="symbol">SYMBOL</string>
+    <string name="przytrzymanie_przycisku_przez_3_sekundy">PRZYTRZYMANIE PRZYCISKU PRZEZ 3 SEKUNDY</string>
+    <string name="has_o">HASŁO</string>
 
 </resources>
