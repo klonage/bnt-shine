@@ -23,5 +23,11 @@
     <string name="strona_www">STRONA WWW</string>
     <string name="bnt_systems">BNT SYSTEMS</string>
     <string name="title_activity_network_settings">NetworkSettingsActivity</string>
+    <string name="adres_filtra_faz_">ADRES FILTRA FAZ:</string>
+    <string name="wyszukaj_filtr_faz_automatycznie">WYSZUKAJ FILTR FAZ AUTOMATYCZNIE</string>
+    <string name="ustaw_adres_manualnie">USTAW ADRES MANUALNIE</string>
+    <string name="ip_">IP:</string>
+    <string name="maska_">MASKA:</string>
+    <string name="zmie_adres_sieciowy_filtra_faz">ZMIEŃ ADRES SIECIOWY FILTRA FAZ</string>
 
 </resources>

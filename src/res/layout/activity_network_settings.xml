@@ -20,26 +20,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="ADRES FILTRA FAZ:"
+            android:text="@string/adres_filtra_faz_"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <RadioGroup
-            android:id="@+id/radioGroup1"
+            android:id="@+id/serverLocalizationRadioGroup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
             <RadioButton
-                android:id="@+id/radio0"
+                android:id="@+id/automaticLocalizeServerRadio"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="WYSZUKAJ FILTR FAZ AUTOMATYCZNIE" />
+                android:text="@string/wyszukaj_filtr_faz_automatycznie" />
 
             <RadioButton
-                android:id="@+id/radio1"
+                android:id="@+id/manualLocalizeServerRadio"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="USTAW ADRES MANUALNIE" />
+                android:checked="true"
+                android:text="@string/ustaw_adres_manualnie" />
         </RadioGroup>
 
         <LinearLayout
@@ -51,14 +52,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:text="IP:" />
+                android:text="@string/ip_" />
 
             <EditText
-                android:id="@+id/editText1"
-                android:layout_width="fill_parent"
+                android:id="@+id/ipAddressEditText"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10" >
+                android:ems="10" 
+                android:inputType="text">
 
                 <requestFocus />
             </EditText>
@@ -73,14 +75,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="23dp"
-                android:text="MASKA:" />
+                android:text="@string/maska_" />
 
             <EditText
-                android:id="@+id/editText2"
-                android:layout_width="match_parent"
+                android:id="@+id/maskEditText"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10" 
+                android:inputType="text"/>
         </LinearLayout>
 
         <Button
@@ -89,7 +92,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginTop="50dp"
-            android:text="ZMIEŃ ADRES SIECIOWY FILTRA FAZ" />
+            android:onClick="changeAddressClick"
+            android:text="@string/zmie_adres_sieciowy_filtra_faz" />
 
     </LinearLayout>
 
