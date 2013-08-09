@@ -27,7 +27,7 @@
             android:layout_height="wrap_content" >
 
             <RadioButton
-                android:id="@+id/windowRadioGroup"
+                android:id="@+id/windowRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -35,21 +35,21 @@
                 android:text="@string/okienko_z_potwierdzeniem" />
 
             <RadioButton
-                android:id="@+id/symbolRadioGroup"
+                android:id="@+id/symbolRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/symbol" />
 
             <RadioButton
-                android:id="@+id/tapRadioGroup"
+                android:id="@+id/tapRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/przytrzymanie_przycisku_przez_3_sekundy" />
 
             <RadioButton
-                android:id="@+id/passRadioGroup"
+                android:id="@+id/passRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"

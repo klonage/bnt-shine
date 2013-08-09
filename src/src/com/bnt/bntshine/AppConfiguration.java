@@ -1,13 +1,14 @@
 package com.bnt.bntshine;
 
 public final class AppConfiguration {
-	private static String WWW = "http://www.bntsystems.pl";
-	private static String MAIL_ADDRESS = "dwybranczyk@bntsystems.pl";
-	private static String MAIL_SUBJECT = "Pomoc BNT Shine";
-	private static String PHONE_NUMBER = "100000000";
-	private static String DEFAULT_IP = "192.168.0.123";
-	private static String DEFAULT_MASK = "255.255.255.0";
-	private static boolean DEFAULT_MODE = true; //true - manual, false - automatic
+	private static final int DEFAULT_GLOBAL_OFF_METHOD = 0;
+	private static final String WWW = "http://www.bntsystems.pl";
+	private static final String MAIL_ADDRESS = "dwybranczyk@bntsystems.pl";
+	private static final String MAIL_SUBJECT = "Pomoc BNT Shine";
+	private static final String PHONE_NUMBER = "100000000";
+	private static final String DEFAULT_IP = "192.168.0.123";
+	private static final String DEFAULT_MASK = "255.255.255.0";
+	private static final boolean DEFAULT_MODE = true; //true - manual, false - automatic
 	
 	public static String getWWW() {
 		return WWW;
@@ -35,5 +36,9 @@ public final class AppConfiguration {
 
 	public static boolean getDefaultMode() {
 		return DEFAULT_MODE;
+	}
+
+	public static int getDefaultGlobalOffMethod() {
+		return DEFAULT_GLOBAL_OFF_METHOD;
 	}
 }
