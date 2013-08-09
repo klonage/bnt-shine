@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,15 +20,16 @@ public class GlobalOffAction {
 	public GlobalOffAction(Context applicationContext, Activity parentActivity) {
 		appContext = applicationContext;
 		this.parentActivity = parentActivity;
-		
+
 		reloadConfig();
 	}
 
 	public void doGlobalOff() {
-		reloadConfig(); // TODO: should it be here? probably no, and should be moved to globaloffsettings
+		reloadConfig(); // TODO: should it be here? probably no, and should be
+						// moved to globaloffsettings
 		authorize();
 	}
-	
+
 	private void reloadConfig() {
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(appContext);
@@ -35,8 +38,10 @@ public class GlobalOffAction {
 				AppConfiguration.getDefaultGlobalOffMethod());
 		password = preferences.getString("settings.global_off.password", "");
 	}
-	
+
 	private void authorize() {
+		((MainActivity) parentActivity).setGlobalOffTouchListener(null);
+
 		switch (selectedMethod) {
 		case 0: // confirmation window
 			showConfirmationWindow();
@@ -45,6 +50,7 @@ public class GlobalOffAction {
 			showSymbolReader();
 			break;
 		case 2:
+			changeButtonAction();
 			break;
 		case 3:
 			showPasswordPrompt();
@@ -84,22 +90,62 @@ public class GlobalOffAction {
 				String value = input.getText().toString();
 				if (value.equals(password)) {
 					executeGlobalOff();
-				}
-				else {
-					Toast.makeText(parentActivity, "Wprowadzono niepoprawne hasło", Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(parentActivity,
+							"Wprowadzono niepoprawne hasło", Toast.LENGTH_LONG)
+							.show();
 				}
 			}
 
 		});
 
-		alert.setNegativeButton("Anuluj", null);/*,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-
-					}
-				});*/
-
+		alert.setNegativeButton("Anuluj", null);
 		alert.show();
+	}
+
+	private void changeButtonAction() {
+		MainActivity mact = (MainActivity) parentActivity;
+
+		mact.setGlobalOffTouchListener(new View.OnTouchListener() {
+			private float mDownX;
+			private float mDownY;
+			private final float SCROLL_THRESHOLD = 30;
+			private long time;
+			private boolean isOnClick;
+
+			@Override
+			public boolean onTouch(View v, MotionEvent ev) {
+				switch (ev.getAction() & MotionEvent.ACTION_MASK) {
+				case MotionEvent.ACTION_DOWN:
+					mDownX = ev.getX();
+					mDownY = ev.getY();
+					isOnClick = true;
+					time = System.currentTimeMillis();
+					break;
+				case MotionEvent.ACTION_CANCEL:
+				case MotionEvent.ACTION_UP:
+					if (isOnClick && System.currentTimeMillis() - time > 2000) { // FIXME:
+																					// I really don't  know why
+																					// I need to use 2000 value,
+																					// when I'm going to wait 3000ms...
+																					// maybe it's due inaccurate
+																					// currentTimeMillis function
+						executeGlobalOff();
+					}
+					break;
+				case MotionEvent.ACTION_MOVE:
+					if (isOnClick
+							&& (Math.abs(mDownX - ev.getX()) > SCROLL_THRESHOLD || Math
+									.abs(mDownY - ev.getY()) > SCROLL_THRESHOLD)) {
+						isOnClick = false;
+					}
+					break;
+				default:
+					break;
+				}
+				return false;
+			}
+		});
 	}
 
 	private void executeGlobalOff() {

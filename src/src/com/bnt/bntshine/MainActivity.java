@@ -6,7 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private GlobalOffAction globalOff;
@@ -49,9 +53,12 @@ public class MainActivity extends Activity {
 		globalOff.doGlobalOff();
 	}
 	
+	public void setGlobalOffTouchListener(View.OnTouchListener listener) {
+		Button globalOffBtn = (Button) findViewById(R.id.globalOffButton);
+		globalOffBtn.setOnTouchListener(listener);
+	}
+	
 	private void init() {
 		globalOff = new GlobalOffAction(getApplicationContext(), this);
-		
-		//Button globalOffBtn = (Button);
 	}
 }
