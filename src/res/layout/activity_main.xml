@@ -30,6 +30,7 @@
             android:layout_marginRight="-5dip"
             android:layout_weight="1"
             android:text="@string/ustawienia"
+            android:onClick="showSettingsActivityClick"
             android:textSize="8sp" />
 
         <Button

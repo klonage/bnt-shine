@@ -10,5 +10,11 @@
     <string name="harmonogram">HARMONOGRAM</string>
     <string name="sceny">SCENY</string>
     <string name="global_off">GLOBAL OFF</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="nazwy">NAZWY</string>
+    <string name="profile">PROFILE</string>
+    <string name="opcje_global_off">OPCJE GLOBAL OFF</string>
+    <string name="ustawienia_sieciowe">USTAWIENIA SIECIOWE</string>
+    <string name="pomoc">POMOC</string>
 
 </resources>
