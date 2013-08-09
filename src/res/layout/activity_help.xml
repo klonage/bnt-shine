@@ -34,6 +34,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:onClick="callToSupportClick"
             android:text="@string/zadzwo_do_konsultanta" />
 
         <Button
@@ -41,6 +42,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:onClick="sendMailClick"
             android:text="@string/wy_lij_mail" />
 
         <Button
@@ -48,6 +50,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:onClick="openWWWPageClick"
             android:text="@string/strona_www" />
 
     </LinearLayout>

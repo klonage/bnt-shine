@@ -5,6 +5,8 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="16"
@@ -36,6 +38,10 @@
         <activity
             android:name="com.bnt.bntshine.HelpActivity"
             android:label="@string/title_activity_help" >
+        </activity>
+        <activity
+            android:name="com.bnt.bntshine.NetworkSettingsActivity"
+            android:label="@string/title_activity_network_settings" >
         </activity>
     </application>
 

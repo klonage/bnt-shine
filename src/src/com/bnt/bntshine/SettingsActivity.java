@@ -25,5 +25,10 @@ public class SettingsActivity extends Activity {
 		Intent intent = new Intent(this, HelpActivity.class);
 		startActivity(intent);
 	}
+	
+	public void showNetworkSettingsActivity(View view) {
+		Intent intent = new Intent(this, NetworkSettingsActivity.class);
+		startActivity(intent);
+	}
 
 }

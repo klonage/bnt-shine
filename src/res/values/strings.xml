@@ -22,5 +22,6 @@
     <string name="wy_lij_mail">WYŚLIJ MAIL</string>
     <string name="strona_www">STRONA WWW</string>
     <string name="bnt_systems">BNT SYSTEMS</string>
+    <string name="title_activity_network_settings">NetworkSettingsActivity</string>
 
 </resources>
