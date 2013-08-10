@@ -34,15 +34,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public void notImplementedFunctionClick(View view) {
 		AlertDialog alertDialog;
-		alertDialog = new AlertDialog.Builder(this).create();
-		alertDialog.setTitle("Funkcja niedostępna");
-		alertDialog.setMessage("Obecnie funkcjonalność nie jest dostępna.");
-		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		alertDialog = new AlertDialog.Builder(this).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 			}
-		});
-
+		}).create();
+		alertDialog.setTitle("Funkcja niedostępna");
+		alertDialog.setMessage("Obecnie funkcjonalność nie jest dostępna.");
 		alertDialog.show();
 	}
 
