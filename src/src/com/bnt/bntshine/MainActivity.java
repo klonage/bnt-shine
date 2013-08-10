@@ -81,8 +81,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			@Override
 			public void DoStuff() {
-				Toast.makeText(MainActivity.this, "super", Toast.LENGTH_SHORT).show();
-				
+				showAddMenu();
 			}
 		});
 	}
@@ -91,4 +90,18 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         Toast.makeText(this, "Clicked View", Toast.LENGTH_SHORT).show();
     }
+	
+	private void showAddMenu() {
+		final CharSequence[] items = {"DODAJ URZĄDZENIE", "DODAJ GRUPĘ URZĄDZEŃ", "DODAJ SCENĘ"};
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("OPCJE");
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+		    public void onClick(DialogInterface dialog, int item) {
+		         
+		    }
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
 }
