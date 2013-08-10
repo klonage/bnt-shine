@@ -41,7 +41,6 @@ class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
                     .findViewById(R.id.menu_title);
             convertView.setTag(holder);
         } else {
-            // view already defined, retrieve view holder
             holder = (ViewHolder) convertView.getTag();
         }       
 

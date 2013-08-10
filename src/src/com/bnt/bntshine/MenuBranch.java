@@ -39,7 +39,7 @@ public class MenuBranch {
 
         ListAdapter adapter = new MenuItemAdapter(activity, items);
 
-        return new AlertDialog.Builder(activity).setTitle("Select Image")
+        return new AlertDialog.Builder(activity).setTitle(title)
             .setAdapter(adapter, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int item ) {
                     Toast.makeText(activity, "Item Selected: " + item, Toast.LENGTH_SHORT).show();

@@ -26,8 +26,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	
+		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
-		
 		items.add(new GlobalItem("Lewa lampa", 12, 0));
 		
 		init();

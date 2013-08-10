@@ -4,18 +4,34 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0" />
+
     <ImageView
         android:id="@+id/menu_icon"
-        android:layout_width="48px"
-        android:layout_height="48px"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_gravity="left" />
 
     <TextView
         android:id="@+id/menu_title"
-        android:textColor="#0000FF"
-        android:text=""
-        android:paddingLeft="10dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_weight="1"
+        android:paddingLeft="10dip" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_weight="0"
+        android:src="@drawable/list_longpressed_holo" />
+
 </LinearLayout>
