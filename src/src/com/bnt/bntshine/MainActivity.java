@@ -1,5 +1,7 @@
 package com.bnt.bntshine;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -23,6 +25,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	
+		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
+		
+		items.add(new GlobalItem("Lewa lampa", 12, 0));
 		
 		init();
 	}

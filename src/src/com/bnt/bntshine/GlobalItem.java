@@ -6,6 +6,7 @@ public class GlobalItem {
 	private int type; //i know what enum is, but I think int should be easier to use here.
 	
 	private static final int ICONS[] = {R.drawable.ic_launcher};
+	private static final String TYPE_NAME[] = {"OŚWIETLENIE", "ROLETY"};
 	
 	public GlobalItem(String name, int group, int type) {
 		this.name = name;
@@ -27,5 +28,9 @@ public class GlobalItem {
 	
 	public int getIcon() {
 		return ICONS[type];
+	}
+
+	public static String getTypeName(int type) {
+		return TYPE_NAME[type];
 	}
 }

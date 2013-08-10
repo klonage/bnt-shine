@@ -1,6 +1,5 @@
 package com.bnt.bntshine;
 
-import java.util.Arrays;
 import java.util.List;
 
 import android.content.Context;
@@ -12,22 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
  
-class MenuItemAdapter extends ArrayAdapter<String> {
+class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
 	
-	private List<Integer> images;
-	List<String> myitems;
-	public MenuItemAdapter(Context context, List<String> items, List<Integer> images) {
+	public MenuItemAdapter(Context context, List<GlobalItem> items) {
 	    super(context, android.R.layout.select_dialog_item, items);
-	    this.images = images;
-	    myitems = items; 
 	}
 	
-	public MenuItemAdapter(Context context, String[] items, Integer[] images) {
-	    super(context, android.R.layout.select_dialog_item, items);
-	    this.images = Arrays.asList(images);
-	    myitems = Arrays.asList(items);
-	}
-
     ViewHolder holder;
 
     class ViewHolder {
@@ -56,9 +45,9 @@ class MenuItemAdapter extends ArrayAdapter<String> {
             holder = (ViewHolder) convertView.getTag();
         }       
 
-        Drawable drawable = getContext().getResources().getDrawable(R.drawable.ic_launcher);
+        Drawable drawable = getContext().getResources().getDrawable(getItem(position).getIcon());
 
-        holder.title.setText(myitems.get(position));
+        holder.title.setText(getItem(position).getName());
         holder.icon.setImageDrawable(drawable);
 
         return convertView;
