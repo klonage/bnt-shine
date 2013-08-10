@@ -1,6 +1,5 @@
 package com.bnt.bntshine;
 
-import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,12 +11,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private GlobalOffAction globalOff;
 	private PagedDragDropGrid gridview;
+	private MenuBranch menuBranch;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	public void notImplementedFunctionClick(View view) {
+		notImplementedFunctionAlert();
+	}
+
+	public void notImplementedFunctionAlert() {
 		AlertDialog alertDialog;
 		alertDialog = new AlertDialog.Builder(this).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
@@ -62,6 +66,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	private void init() {
 		globalOff = new GlobalOffAction(getApplicationContext(), this);
+		menuBranch = new MenuBranch(this);
 		
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
 		gridview.setAdapter(new MainGridAdapter(this, gridview));
@@ -81,7 +86,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			@Override
 			public void DoStuff() {
-				showAddMenu();
+				menuBranch.headList();
 			}
 		});
 	}
@@ -90,18 +95,4 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         Toast.makeText(this, "Clicked View", Toast.LENGTH_SHORT).show();
     }
-	
-	private void showAddMenu() {
-		final CharSequence[] items = {"DODAJ URZĄDZENIE", "DODAJ GRUPĘ URZĄDZEŃ", "DODAJ SCENĘ"};
-
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("OPCJE");
-		builder.setItems(items, new DialogInterface.OnClickListener() {
-		    public void onClick(DialogInterface dialog, int item) {
-		         
-		    }
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
 }
