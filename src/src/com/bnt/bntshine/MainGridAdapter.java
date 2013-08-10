@@ -36,35 +36,8 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		Page page1 = new Page();
 		List<Item> items = new ArrayList<Item>();
 		items.add(new Item(1, "Item 1", R.drawable.ic_launcher));
-		items.add(new Item(2, "Item 2", R.drawable.ic_launcher));
-		items.add(new Item(3, "Item 3", R.drawable.ic_launcher));
 		page1.setItems(items);
 		pages.add(page1);
-		
-		Page page2 = new Page();
-		items = new ArrayList<Item>();
-		items.add(new Item(4, "Item 4", R.drawable.ic_launcher));
-		items.add(new Item(5, "Item 5", R.drawable.ic_launcher));
-		items.add(new Item(6, "Item 6", R.drawable.ic_launcher));
-		items.add(new Item(7, "Item 7", R.drawable.ic_launcher));
-		items.add(new Item(8, "Item 8", R.drawable.ic_launcher));
-		items.add(new Item(9, "Item 9", R.drawable.ic_launcher));
-		page2.setItems(items);
-		pages.add(page2);
-		
-		Page page3 = new Page();
-		items = new ArrayList<Item>();
-		items.add(new Item(10, "Item 10", R.drawable.ic_launcher));
-		items.add(new Item(11, "Item 11", R.drawable.ic_launcher));
-		page3.setItems(items);
-		pages.add(page3);
-						
-		Page page4 = new Page();
-        items = new ArrayList<Item>();
-        items.add(new Item(46, "Item 46", R.drawable.ic_launcher));
-        
-        page4.setItems(items);
-        pages.add(page4);
 	}
 
 	@Override
@@ -199,5 +172,4 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
     public int deleteDropZoneLocation() {        
         return BOTTOM;
     }
-	
 }

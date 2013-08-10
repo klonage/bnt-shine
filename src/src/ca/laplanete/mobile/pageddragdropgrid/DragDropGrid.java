@@ -34,6 +34,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.bnt.bntshine.CallerInterface;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
@@ -55,6 +57,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
 public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongClickListener {
 
@@ -87,6 +90,7 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
 	private int lastTouchY;
 	private int gridPageHeight;
 	private DeleteDropZoneView deleteZone;
+	private CallerInterface customCaller;
 
 	public DragDropGrid(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -129,6 +133,7 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
 	        useEditModeAdapter();
 	    }
 	    
+	    customCaller = null;
 		setOnTouchListener(this);
 		setOnLongClickListener(this);
 		createDeleteZone();
@@ -977,6 +982,9 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
     		return true;
 	    }
 	    
+	    if (customCaller != null)
+	    	customCaller.DoStuff();
+	    
 	    return false;
 	}
 
@@ -1148,5 +1156,9 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
 			this.pageIndex = pageIndex;
 			this.itemIndex = itemIndex;
 		}
+	}
+
+	public void setLongerClicker(CallerInterface iface) {
+		customCaller = iface;
 	}
 }

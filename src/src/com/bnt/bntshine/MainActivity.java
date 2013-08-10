@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -66,6 +68,23 @@ public class MainActivity extends Activity implements OnClickListener {
 		gridview.setClickListener(this);
 		
 		gridview.setBackgroundColor(Color.LTGRAY);
+		gridview.setOnLongClickListener(new OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				Toast.makeText(MainActivity.this, "super", Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
+		
+		gridview.SetLongClickMethod(new CallerInterface() {
+			
+			@Override
+			public void DoStuff() {
+				Toast.makeText(MainActivity.this, "super", Toast.LENGTH_SHORT).show();
+				
+			}
+		});
 	}
 	
 	@Override

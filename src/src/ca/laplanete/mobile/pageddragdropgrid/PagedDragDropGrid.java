@@ -28,6 +28,8 @@
  */
 package ca.laplanete.mobile.pageddragdropgrid;
 
+import com.bnt.bntshine.CallerInterface;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -231,4 +233,8 @@ public class PagedDragDropGrid extends HorizontalScrollView implements PagedCont
         // TODO Auto-generated method stub
         return false;
     }	
+    
+    public void SetLongClickMethod(CallerInterface iface) {
+    	grid.setLongerClicker(iface);
+    }
 }
