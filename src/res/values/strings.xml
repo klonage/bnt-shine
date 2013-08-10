@@ -35,5 +35,6 @@
     <string name="symbol">SYMBOL</string>
     <string name="przytrzymanie_przycisku_przez_3_sekundy">PRZYTRZYMANIE PRZYCISKU PRZEZ 3 SEKUNDY</string>
     <string name="has_o">HASŁO</string>
+    <string name="removeItem">Usuń</string>
 
 </resources>
