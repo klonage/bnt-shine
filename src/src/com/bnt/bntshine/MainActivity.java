@@ -19,13 +19,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	private PagedDragDropGrid gridview;
 	private MenuBranch menuBranch;
 	private MainGridAdapter mainGridAdapter;
-	
+	private ProfileManager profileManager;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		init();
+
+		createMainGrid();
 		
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
@@ -37,7 +38,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		items.add(new GlobalItem("Grupa lamp", 2, -1, 4, mainGridAdapter));
 		GlobalItem it = new GlobalItem("Grupa rolet", 3, -1, 8, mainGridAdapter);
 		items.add(it);
-		addToCurrentPage(it);
+
+		init();
 	}
 
 	@Override
@@ -67,59 +69,67 @@ public class MainActivity extends Activity implements OnClickListener {
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public void doGlobalOffClick(View view) {
 		globalOff.doGlobalOff();
 	}
-	
+
 	public void setGlobalOffTouchListener(View.OnTouchListener listener) {
 		Button globalOffBtn = (Button) findViewById(R.id.globalOffButton);
 		globalOffBtn.setOnTouchListener(listener);
 	}
-	
+
 	private void init() {
 		globalOff = new GlobalOffAction(getApplicationContext(), this);
 		menuBranch = new MenuBranch(this);
-		
-		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
-		mainGridAdapter = new MainGridAdapter(this, gridview, AppConfiguration.getPagesCount());
+		profileManager = new ProfileManager(mainGridAdapter, this);
+		profileManager.loadFromConfigFile();
 		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
 
 		setLongClickToGridView();
 	}
 	
+	private void createMainGrid() {
+		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
+		mainGridAdapter = new MainGridAdapter(this, gridview, AppConfiguration.getPagesCount());
+	}
+
 	private void setLongClickToGridView() {
 		gridview.SetLongClickMethod(new CallerInterface() {
-			
+
 			@Override
 			public void DoStuff() {
 				menuBranch.headList();
 			}
 		});
 	}
-	
+
 	@Override
-    public void onClick(View v) {
+	public void onClick(View v) {
 		int it = gridview.getClickedItem();
 
 		GlobalItem currItem = mainGridAdapter.getItem(0, it);
-        Toast.makeText(this, "A teraz wysylamy: " + (currItem.getAddress() >=0 ? "Adres: " + currItem.getAddress() : "") + " Grupa: " + currItem.getGroup() , Toast.LENGTH_SHORT).show();
-    }
-	
+		
+		if (currItem == null)
+			return;
+		Toast.makeText(this, "A teraz wysylamy: " + (currItem.getAddress() >=0 ? "Adres: " + currItem.getAddress() : "") + " Grupa: " + currItem.getGroup() , Toast.LENGTH_SHORT).show();
+	}
+
 	public void addToCurrentPage(GlobalItem item) {
 		if (!mainGridAdapter.hasItem(item)) {
 			mainGridAdapter.addToPage(gridview.currentPage(), item);
 			gridview.notifyDataSetChanged();
-			
+
 			setLongClickToGridView(); // TODO: why I need to do it everytime when I change a model??
+			profileManager.saveToConfigFile();
 		}
 	}
-	
+
 	public void removeFromCanvas(GlobalItem item) {
 		mainGridAdapter.deleteItem(item);
 		gridview.notifyDataSetChanged();
-		
+		profileManager.saveToConfigFile();
 		setLongClickToGridView();
 	}
 }

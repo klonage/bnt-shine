@@ -72,19 +72,16 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		label.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
 
 		layout.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		
-		// only set selector on every other page for demo purposes
-		// if you do not wish to use the selector functionality, simply disregard this code
-		if(page % 2 == 0) {
-    		setViewBackground(layout);
-    		layout.setClickable(true);
-    		layout.setOnLongClickListener(new OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    return gridview.onLongClick(v);
-                }
-    		});
-		}
+
+		setViewBackground(layout);
+		layout.setClickable(true);
+		layout.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				return gridview.onLongClick(v);
+			}
+		});
+
 
 		layout.addView(label);
 		return layout;
@@ -98,8 +95,12 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
     }
 
 	public GlobalItem getItem(int page, int index) {
-		List<GlobalItem> items = itemsInPage(page);
-		return items.get(index);
+		try {
+			List<GlobalItem> items = itemsInPage(page);
+			return items.get(index);
+		} catch (Exception exc) {
+			return null;
+		}
 	}
 	
 	public boolean hasItem(GlobalItem item) {

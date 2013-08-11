@@ -70,4 +70,8 @@ public class GlobalItem {
 	public boolean getOnBoard() {
 		return parentAdapter.hasItem(this);
 	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;		
+	}
 }
