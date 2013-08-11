@@ -7,31 +7,36 @@ import java.util.List;
 
 public class Page {
 
-	private List<Item> items = new ArrayList<Item>();
+	private List<GlobalItem> items = new ArrayList<GlobalItem>();
 
-	public List<Item> getItems() {
+	public List<GlobalItem> getItems() {
 		return items;
 	}
 
-	public void setItems(List<Item> items) {
+	public void setItems(List<GlobalItem> items) {
 		this.items = items;
 	}
 	
-	public void addItem(Item item) {
-		items.add(item);
+	public void addItem(GlobalItem item) {
+		if (!items.contains(item))
+			items.add(item);
 	}
 	
 	public void swapItems(int itemA, int itemB) {
 		Collections.swap(items, itemA, itemB);
 	}
 
-	public Item removeItem(int itemIndex) {
-		Item item = items.get(itemIndex);
+	public GlobalItem removeItem(int itemIndex) {
+		GlobalItem item = items.get(itemIndex);
 		items.remove(itemIndex);
 		return item;
 	}
 
 	public void deleteItem(int itemIndex) {
 		items.remove(itemIndex);
+	}
+	
+	public void deleteItem(GlobalItem item) {
+		items.remove(item);
 	}
 }

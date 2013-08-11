@@ -1,5 +1,7 @@
 package com.bnt.bntshine;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,11 +20,22 @@ public class MainActivity extends Activity implements OnClickListener {
 	private GlobalOffAction globalOff;
 	private PagedDragDropGrid gridview;
 	private MenuBranch menuBranch;
+	private MainGridAdapter mainGridAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	
+		// TODO: sample data
+		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
+		items.clear();
+		items.add(new GlobalItem("Lewa lampa", 12, 1));
+		items.add(new GlobalItem("Roleta w kuchni", 42, 2));
+		items.add(new GlobalItem("Prawa lampa", 13, 1));
+		items.add(new GlobalItem("Roleta w łazience", 73, 2));
+		items.add(new GlobalItem("Grupa lamp", 2, 4));
+		items.add(new GlobalItem("Grupa rolet", 3, 8));
 		
 		init();
 	}
@@ -69,19 +82,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		menuBranch = new MenuBranch(this);
 		
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
-		gridview.setAdapter(new MainGridAdapter(this, gridview));
+		mainGridAdapter = new MainGridAdapter(this, gridview);
+		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
-		
-		gridview.setBackgroundColor(Color.LTGRAY);
-		gridview.setOnLongClickListener(new OnLongClickListener() {
-			
-			@Override
-			public boolean onLongClick(View v) {
-				Toast.makeText(MainActivity.this, "super", Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		});
-		
+
+		setLongClickToGridView();
+	}
+	
+	private void setLongClickToGridView() {
 		gridview.SetLongClickMethod(new CallerInterface() {
 			
 			@Override
@@ -95,4 +103,18 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         Toast.makeText(this, "Clicked View", Toast.LENGTH_SHORT).show();
     }
+	
+	public void addToCanvas(GlobalItem item) {
+		mainGridAdapter.addToCurrentPage(item);
+		gridview.notifyDataSetChanged();
+		
+		setLongClickToGridView(); // TODO: why I need to do it everytime when I change a model??
+	}
+	
+	public void removeFromCanvas(GlobalItem item) {
+		mainGridAdapter.deleteItem(0, item);
+		gridview.notifyDataSetChanged();
+		
+		setLongClickToGridView();
+	}
 }
