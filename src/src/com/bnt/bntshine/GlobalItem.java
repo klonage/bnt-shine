@@ -3,6 +3,7 @@ package com.bnt.bntshine;
 public class GlobalItem {
 	private String name;
 	private int group;
+	private int address;
 	private int type; //i know what enum is, but I think int should be easier to use here.
 	private boolean onBoard;
 	
@@ -27,9 +28,10 @@ public class GlobalItem {
 		TYPE_NAME[8] = "ROLETY";
 	}
 	
-	public GlobalItem(String name, int group, int type) {
+	public GlobalItem(String name, int group, int address, int type) {
 		this.name = name;
 		this.group = group;
+		this.address = address;
 		this.type = type;
 	}
 	
@@ -39,6 +41,10 @@ public class GlobalItem {
 	
 	public int getGroup() {
 		return group;
+	}
+
+	public int getAddress() {
+		return address;
 	}
 	
 	public int getType() {

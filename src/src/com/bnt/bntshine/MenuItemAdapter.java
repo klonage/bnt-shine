@@ -25,6 +25,7 @@ class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
     class ViewHolder {
         ImageView icon;
         TextView title;
+        TextView description;
         CheckBox cbox;
     }
 	@Override
@@ -44,11 +45,15 @@ class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
             holder.title = (TextView) convertView
                     .findViewById(R.id.menu_title);
             holder.cbox = (CheckBox) convertView.findViewById(R.id.menu_checkbox);
+            holder.description = (TextView) convertView
+            		.findViewById(R.id.menu_description);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }       
 
+        final GlobalItem currItem = getItem(position);
+        
         Drawable drawable = getContext().getResources().getDrawable(getItem(position).getIcon());
 
         holder.cbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -61,17 +66,19 @@ class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
 				
 				if (isChecked) {
 					
- 					ma.addToCanvas(getItem(position));
+ 					ma.addToCanvas(currItem);
 				} else {
-					ma.removeFromCanvas(getItem(position));
+					ma.removeFromCanvas(currItem);
 				}
 				
 			}
 		});
         
-        holder.title.setText(getItem(position).getName());
+        holder.title.setText("Nazwa: " + currItem.getName());
         holder.icon.setImageDrawable(drawable);
-        holder.cbox.setChecked(getItem(position).getOnBoard());
+        holder.cbox.setChecked(currItem.getOnBoard());
+        holder.description.setText((currItem.getAddress()>=0 ? "Adres: " + currItem.getAddress() : "") +
+        		" Grupa: " + currItem.getGroup());
         return convertView;
 	}
 

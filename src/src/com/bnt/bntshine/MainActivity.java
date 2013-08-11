@@ -6,12 +6,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
@@ -30,12 +28,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
 		items.clear();
-		items.add(new GlobalItem("Lewa lampa", 12, 1));
-		items.add(new GlobalItem("Roleta w kuchni", 42, 2));
-		items.add(new GlobalItem("Prawa lampa", 13, 1));
-		items.add(new GlobalItem("Roleta w łazience", 73, 2));
-		items.add(new GlobalItem("Grupa lamp", 2, 4));
-		items.add(new GlobalItem("Grupa rolet", 3, 8));
+		items.add(new GlobalItem("Lewa lampa", 12, 1, 1));
+		items.add(new GlobalItem("Roleta w kuchni", 42, 2, 2));
+		items.add(new GlobalItem("Prawa lampa", 13, 5, 1));
+		items.add(new GlobalItem("Roleta w łazience", 73, 2, 2));
+		items.add(new GlobalItem("Grupa lamp", 2, -1, 4));
+		items.add(new GlobalItem("Grupa rolet", 3, -1, 8));
 		
 		init();
 	}
