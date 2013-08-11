@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Toast;
 import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 
@@ -99,7 +100,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	@Override
     public void onClick(View v) {
-        Toast.makeText(this, "Clicked View", Toast.LENGTH_SHORT).show();
+		int it = gridview.getClickedItem();
+
+		GlobalItem currItem = mainGridAdapter.getItem(0, it);
+        Toast.makeText(this, "A teraz wysylamy: " + (currItem.getAddress() >=0 ? "Adres: " + currItem.getAddress() : "") + " Grupa: " + currItem.getGroup() , Toast.LENGTH_SHORT).show();
     }
 	
 	public void addToCanvas(GlobalItem item) {

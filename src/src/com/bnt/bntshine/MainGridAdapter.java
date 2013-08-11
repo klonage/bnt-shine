@@ -96,7 +96,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
         }
     }
 
-	private GlobalItem getItem(int page, int index) {
+	public GlobalItem getItem(int page, int index) {
 		List<GlobalItem> items = itemsInPage(page);
 		return items.get(index);
 	}

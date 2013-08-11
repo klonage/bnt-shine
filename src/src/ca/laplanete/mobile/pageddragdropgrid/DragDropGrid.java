@@ -35,6 +35,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.bnt.bntshine.CallerInterface;
+import com.bnt.bntshine.GlobalItem;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -57,6 +58,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
 public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongClickListener {
 
@@ -69,6 +71,8 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
 
 	private SparseIntArray newPositions = new SparseIntArray();
 
+	private int clickedItem;
+	
 	private int gridPageWidth = 0;
 	private int dragged = -1;
 	private int columnWidthSize;
@@ -261,8 +265,10 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
 	    if(!aViewIsDragged()) {
 	        if(onClickListener != null) {
                 View clickedView = getChildAt(getTargetAtCoor((int) event.getX(), (int) event.getY()));
-                if(clickedView != null)
-                    onClickListener.onClick(clickedView);
+                if(clickedView != null) {
+                	clickedItem = getTargetAtCoor((int) event.getX(), (int) event.getY());
+                	onClickListener.onClick(clickedView);
+                }
             }
 	    } else {
 	        cancelAnimations();
@@ -279,6 +285,10 @@ public class DragDropGrid extends ViewGroup implements OnTouchListener, OnLongCl
 	    }
 	}
 
+	public int getClickedItem() {
+		return clickedItem;
+	}
+	
 	private void manageChildrenReordering() {
 		boolean draggedDeleted = touchUpInDeleteZoneDrop(lastTouchX, lastTouchY);
 
