@@ -45,11 +45,6 @@ public class MenuBranch {
                     Toast.makeText(activity, "Item Selected: " + item, Toast.LENGTH_SHORT).show();
                 }
      }).create();
-		/*AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-		builder.setTitle(title);
-		builder.setItems(new CharSequence[] {"marcin"}, null);
-*/
-		//return builder.create();
 	}
 
 	private void parseHeadDecision(int item) {
@@ -75,8 +70,13 @@ public class MenuBranch {
 				int type = 0;
 				switch (item) {
 				case 0:
-					type = 0;
+					type = 1;
 					break;
+				case 1:
+					type = 2;
+					break;
+				case 2:
+					type = 3;
 				}
 				MenuBranch.this.manageSpecifiedDevices(type);
 			}
@@ -105,7 +105,7 @@ public class MenuBranch {
 		List<GlobalItem> selected = new ArrayList<GlobalItem>();
 		
 		for (GlobalItem globalItem : allItems) {
-			if (globalItem.getType() == type)
+			if ((globalItem.getType() & type) != 0)
 				selected.add(globalItem);
 		}
 		

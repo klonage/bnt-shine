@@ -30,8 +30,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
 		items.clear();
-		items.add(new GlobalItem("Lewa lampa", 12, 0));
-		items.add(new GlobalItem("Prawa lampa", 13, 0));
+		items.add(new GlobalItem("Lewa lampa", 12, 1));
+		items.add(new GlobalItem("Roleta w kuchni", 42, 2));
+		items.add(new GlobalItem("Prawa lampa", 13, 1));
+		items.add(new GlobalItem("Roleta w łazience", 73, 2));
 		
 		init();
 	}
