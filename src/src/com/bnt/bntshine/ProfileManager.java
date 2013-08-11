@@ -2,6 +2,7 @@ package com.bnt.bntshine;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -9,14 +10,15 @@ public class ProfileManager {
 	MainGridAdapter adapter;
 	MainActivity activity;
 	
-	public ProfileManager(MainGridAdapter adapter, MainActivity activity) 
-	{
+	public void setAdapter(MainGridAdapter adapter) {
 		this.adapter = adapter;
+	}
+	
+	public void setActivity(MainActivity activity) {
 		this.activity = activity;
 	}
 	
-	public void saveToConfigFile()
-	{
+	public void saveToConfigFile() {
 		for (int i = 0; i < adapter.pageCount(); i++) {
 			savePageToConfigFile(i);
 		}
@@ -82,7 +84,12 @@ public class ProfileManager {
 		
 	}
 	
-	public void RemoveProfile() {
+	public void removeLocalProfile() {
+		for (int i = 0; i < adapter.pageCount(); i++) {
+			adapter.getPage(i).getItems().clear();
+		}
 		
+		saveToConfigFile();
+		activity.refreshMainView();
 	}
 }

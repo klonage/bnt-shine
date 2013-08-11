@@ -2,7 +2,12 @@ package com.bnt.bntshine;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
 
 public class ProfileActivity extends Activity {
 
@@ -19,4 +24,54 @@ public class ProfileActivity extends Activity {
 		return true;
 	}
 
+	public void onRemoveProfileClick(View view) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("WYBÓR LOKALIZACJI PROFILU");
+		String [] items = new String[]{"PROFIL LOKALNY", "PROFIL ZDALNY"};
+		builder.setItems(items, new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				switch (which) {
+				case 0:
+					removeLocalProfileClick();
+					break;
+				case 1:
+					removeRemoteProfileClick();
+					break;
+				}
+				
+			}
+		});
+
+		builder.create().show();
+	}
+	
+	private void removeLocalProfileClick() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Czy na pewno chcesz usunąć profil lokalny?").setPositiveButton("TAK", new DialogInterface.OnClickListener() {
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		        switch (which){
+		        case DialogInterface.BUTTON_POSITIVE:
+		        	((MyApplication) getApplication()).getProfileManager().removeLocalProfile();
+		        	Toast.makeText(ProfileActivity.this, "Pomyślnie usunięto profil lokalny", Toast.LENGTH_SHORT).show();
+		            break;
+		        }
+		    }
+		}).setNegativeButton("NIE", null).show();
+	}
+	
+	private void removeRemoteProfileClick() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Czy na pewno chcesz usunąć profil zdalny?").setPositiveButton("TAK", new DialogInterface.OnClickListener() {
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		        switch (which){
+		        case DialogInterface.BUTTON_POSITIVE:
+		        	Toast.makeText(ProfileActivity.this, "Usuwam profil zdalny...", Toast.LENGTH_SHORT).show();
+		            break;
+		        }
+		    }
+		}).setNegativeButton("NIE", null).show();
+	}
 }

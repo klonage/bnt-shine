@@ -82,7 +82,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	private void init() {
 		globalOff = new GlobalOffAction(getApplicationContext(), this);
 		menuBranch = new MenuBranch(this);
-		profileManager = new ProfileManager(mainGridAdapter, this);
+		profileManager = ((MyApplication) getApplication()).getProfileManager();
+		profileManager.setActivity(this);
+		profileManager.setAdapter(mainGridAdapter);
 		profileManager.loadFromConfigFile();
 		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
@@ -131,5 +133,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		gridview.notifyDataSetChanged();
 		profileManager.saveToConfigFile();
 		setLongClickToGridView();
+	}
+	
+	public void refreshMainView() {
+		gridview.notifyDataSetChanged();
 	}
 }
