@@ -36,5 +36,10 @@
     <string name="przytrzymanie_przycisku_przez_3_sekundy">PRZYTRZYMANIE PRZYCISKU PRZEZ 3 SEKUNDY</string>
     <string name="has_o">HASŁO</string>
     <string name="removeItem">Usuń</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="nazwy_w_asne_i_ikony">NAZWY WŁASNE I IKONY</string>
+    <string name="zapisz_profil">ZAPISZ PROFIL</string>
+    <string name="importuj_profil">IMPORTUJ PROFIL</string>
+    <string name="usu_profil">USUŃ PROFIL</string>
 
 </resources>

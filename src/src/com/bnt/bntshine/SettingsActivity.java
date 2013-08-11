@@ -35,5 +35,10 @@ public class SettingsActivity extends Activity {
 		Intent intent = new Intent(this, GlobalOffSettingsActivity.class);
 		startActivity(intent);
 	}
+	
+	public void showProfileSettingsClick(View view) {
+		Intent intent = new Intent(this, ProfileActivity.class);
+		startActivity(intent);
+	}
 
 }

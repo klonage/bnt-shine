@@ -6,58 +6,44 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SettingsActivity" >
+    tools:context=".ProfileActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/namesButton"
+            android:id="@+id/customIconsButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/nazwy" />
+            android:text="@string/nazwy_w_asne_i_ikony" />
 
         <Button
-            android:id="@+id/profilesButton"
+            android:id="@+id/saveProfileButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:onClick="showProfileSettingsClick"
-            android:text="@string/profile" />
+            android:text="@string/zapisz_profil" />
 
         <Button
-            android:id="@+id/globalOffSettingsButton"
+            android:id="@+id/importProfileButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:onClick="showGlobalOffSettingsActivityClick"
-            android:text="@string/opcje_global_off" />
+            android:text="@string/importuj_profil" />
 
         <Button
-            android:id="@+id/networkSettingsButton"
+            android:id="@+id/deleteProfileButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:onClick="showNetworkSettingsActivity"
-            android:text="@string/ustawienia_sieciowe" />
-
-        <Button
-            android:id="@+id/helpButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:onClick="showHelpActivityClick"
-            android:text="@string/pomoc" />
+            android:text="@string/usu_profil" />
 
     </LinearLayout>
 
