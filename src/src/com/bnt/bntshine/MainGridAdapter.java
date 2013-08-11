@@ -137,7 +137,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		}
 	}
 
-	private Page getPage(int pageIndex) {
+	public Page getPage(int pageIndex) {
 		return pages.get(pageIndex);
 	}
 

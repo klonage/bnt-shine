@@ -39,4 +39,13 @@ public class Page {
 	public void deleteItem(GlobalItem item) {
 		items.remove(item);
 	}
+	
+	public int itemsCount() {
+		return items.size();
+	}
+	
+
+	public GlobalItem getItem(int index) {
+		return items.get(index);
+	}
 }

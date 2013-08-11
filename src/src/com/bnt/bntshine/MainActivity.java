@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		menuBranch = new MenuBranch(this);
 		
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
-		mainGridAdapter = new MainGridAdapter(this, gridview, 3);
+		mainGridAdapter = new MainGridAdapter(this, gridview, AppConfiguration.getPagesCount());
 		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
 

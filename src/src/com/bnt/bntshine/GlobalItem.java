@@ -6,7 +6,7 @@ public class GlobalItem {
 	private int group;
 	private int address;
 	private int type; //i know what enum is, but I think int should be easier to use here.
-//	private boolean onBoard;
+	private String userName;
 	private MainGridAdapter parentAdapter;
 	
 	private static final int ICONS[];
@@ -36,10 +36,15 @@ public class GlobalItem {
 		this.address = address;
 		this.type = type;
 		this.parentAdapter = adapter;
+		this.userName = "";
 	}
 	
 	public String getName() {
 		return name;
+	}
+	
+	public String getUserName() {
+		return userName;
 	}
 	
 	public int getGroup() {

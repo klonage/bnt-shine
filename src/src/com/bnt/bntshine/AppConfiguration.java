@@ -9,6 +9,7 @@ public final class AppConfiguration {
 	private static final String DEFAULT_IP = "192.168.0.123";
 	private static final String DEFAULT_MASK = "255.255.255.0";
 	private static final boolean DEFAULT_MODE = true; //true - manual, false - automatic
+	private static final int PAGES_COUNT = 3;
 	
 	public static String getWWW() {
 		return WWW;
@@ -40,5 +41,9 @@ public final class AppConfiguration {
 
 	public static int getDefaultGlobalOffMethod() {
 		return DEFAULT_GLOBAL_OFF_METHOD;
+	}
+
+	public static int getPagesCount() {
+		return PAGES_COUNT;
 	}
 }
