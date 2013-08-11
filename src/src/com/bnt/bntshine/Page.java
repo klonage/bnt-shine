@@ -18,7 +18,8 @@ public class Page {
 	}
 	
 	public void addItem(GlobalItem item) {
-		items.add(item);
+		if (!items.contains(item))
+			items.add(item);
 	}
 	
 	public void swapItems(int itemA, int itemB) {

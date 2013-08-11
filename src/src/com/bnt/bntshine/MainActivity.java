@@ -81,17 +81,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		mainGridAdapter = new MainGridAdapter(this, gridview);
 		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
-		
-		gridview.setBackgroundColor(Color.LTGRAY);
-		gridview.setOnLongClickListener(new OnLongClickListener() {
-			
-			@Override
-			public boolean onLongClick(View v) {
-				Toast.makeText(MainActivity.this, "super", Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		});
-		
+
+		setLongClickToGridView();
+	}
+	
+	private void setLongClickToGridView() {
 		gridview.SetLongClickMethod(new CallerInterface() {
 			
 			@Override
@@ -109,10 +103,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void addToCanvas(GlobalItem item) {
 		mainGridAdapter.addToCurrentPage(item);
 		gridview.notifyDataSetChanged();
+		
+		setLongClickToGridView(); // TODO: why I need to do it everytime when I change a model??
 	}
 	
 	public void removeFromCanvas(GlobalItem item) {
 		mainGridAdapter.deleteItem(0, item);
 		gridview.notifyDataSetChanged();
+		
+		setLongClickToGridView();
 	}
 }

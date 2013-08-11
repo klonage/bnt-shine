@@ -61,7 +61,7 @@ class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
 				
 				if (isChecked) {
 					
-					ma.addToCanvas(getItem(position));
+ 					ma.addToCanvas(getItem(position));
 				} else {
 					ma.removeFromCanvas(getItem(position));
 				}
