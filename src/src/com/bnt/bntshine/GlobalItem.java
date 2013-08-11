@@ -10,7 +10,7 @@ public class GlobalItem {
 	private static final String TYPE_NAME[];
 	
 	static {
-		ICONS = new int [8]; TYPE_NAME = new String[8];
+		ICONS = new int [9]; TYPE_NAME = new String[9];
 		
 		ICONS[1] = R.drawable.ic_launcher;
 		TYPE_NAME[1] = "OŚWIETLENIE";
@@ -19,6 +19,12 @@ public class GlobalItem {
 		TYPE_NAME[2] = "ROLETY";
 		
 		TYPE_NAME[3] = "WSZYSTKIE URZĄDZENIA";
+		
+		ICONS[4] = R.drawable.ic_launcher;
+		TYPE_NAME[4] = "OŚWIETLENIE";
+		
+		ICONS[8] = R.drawable.ic_launcher;
+		TYPE_NAME[8] = "ROLETY";
 	}
 	
 	public GlobalItem(String name, int group, int type) {

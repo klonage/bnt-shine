@@ -34,6 +34,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		items.add(new GlobalItem("Roleta w kuchni", 42, 2));
 		items.add(new GlobalItem("Prawa lampa", 13, 1));
 		items.add(new GlobalItem("Roleta w łazience", 73, 2));
+		items.add(new GlobalItem("Grupa lamp", 2, 4));
+		items.add(new GlobalItem("Grupa rolet", 3, 8));
 		
 		init();
 	}

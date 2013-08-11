@@ -53,7 +53,7 @@ public class MenuBranch {
 			MenuBranch.this.addDeviceList();
 			break;
 		case 1:
-			MenuBranch.this.addDeviceGroupList();
+			MenuBranch.this.addGroupList();
 			break;
 		case 2:
 			activity.notImplementedFunctionAlert();
@@ -82,6 +82,26 @@ public class MenuBranch {
 			}
 		}).show();
 	}
+	
+	private void addGroupList() {
+		final CharSequence[] items = { "OŚWIETLENIE", "ROLETY"};
+
+		generateDialog("DODAJ GRUPĘ URZĄDZEŃ", items,
+				new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int item) {
+				int type = 0;
+				switch (item) {
+				case 0:
+					type = 4;
+					break;
+				case 1:
+					type = 8;
+					break;
+				}
+				MenuBranch.this.manageSpecifiedDevices(type);
+			}
+		}).show();
+	}
 
 	private void manageSpecifiedDevices(int type) {
 		final List<GlobalItem> toShowItems = getFromType(type);
@@ -89,17 +109,6 @@ public class MenuBranch {
 		generateSelectionDialog(GlobalItem.getTypeName(type), toShowItems).show();
 	}
 
-	private void addDeviceGroupList() {
-		final CharSequence[] items = { "OŚWIETLENIE", "ROLETY" };
-
-		generateDialog("DODAJ URZĄDZENIE", items,
-				new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int item) {
-				MenuBranch.this.addDeviceList();
-			}
-		}).show();
-	}
-	
 	private List<GlobalItem> getFromType(int type) {
 		List<GlobalItem> allItems = ((MyApplication) activity.getApplication()).getAllItems();
 		List<GlobalItem> selected = new ArrayList<GlobalItem>();
