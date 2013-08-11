@@ -60,13 +60,11 @@ class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				getItem(position).setOnBoard(isChecked);
-				
 				MainActivity ma = (MainActivity) getContext();
 				
 				if (isChecked) {
 					
- 					ma.addToCanvas(currItem);
+ 					ma.addToCurrentPage(currItem);
 				} else {
 					ma.removeFromCanvas(currItem);
 				}

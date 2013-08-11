@@ -1,6 +1,5 @@
 package com.bnt.bntshine;
 
-import android.widget.Adapter;
 
 public class GlobalItem {
 	private String name;
@@ -65,9 +64,5 @@ public class GlobalItem {
 
 	public boolean getOnBoard() {
 		return parentAdapter.hasItem(this);
-	}
-	
-	public void setOnBoard(boolean value) {
-		parentAdapter.addToCurrentPage(this);
 	}
 }

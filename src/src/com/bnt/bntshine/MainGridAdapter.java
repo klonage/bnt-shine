@@ -28,13 +28,14 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 	
 	List<Page> pages = new ArrayList<Page>();
 	
-	public MainGridAdapter(Context context, PagedDragDropGrid gridview) {
+	public MainGridAdapter(Context context, PagedDragDropGrid gridview, int pageCount) {
 		super();
 		this.context = context;
 		this.gridview = gridview;
 		
-		Page page1 = new Page();
-		pages.add(page1);
+		for (int i = 0; i < pageCount; i++) {
+			pages.add(new Page());
+		}
 	}
 
 	@Override
@@ -174,8 +175,13 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		getPage(pageIndex).deleteItem(itemIndex);
 	}
 	
-	public void deleteItem(int pageIndex, GlobalItem item) {
-		getPage(pageIndex).deleteItem(item);
+	public void deleteItem(GlobalItem item) {
+		for (int i = 0; i < pageCount(); i++) {
+			if (getPage(i).getItems().contains(item)) {
+				getPage(i).deleteItem(item);
+				return;
+			}
+		}
 	}
 
     @Override
@@ -183,7 +189,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
         return BOTTOM;
     }
     
-    public void addToCurrentPage(GlobalItem item) {
-    	pages.get(0).addItem(item);
+    public void addToPage(int page, GlobalItem item) {
+    	getPage(page).addItem(item);
     }
 }

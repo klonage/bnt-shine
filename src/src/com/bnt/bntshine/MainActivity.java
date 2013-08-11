@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.Toast;
 import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 
@@ -81,7 +80,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		menuBranch = new MenuBranch(this);
 		
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
-		mainGridAdapter = new MainGridAdapter(this, gridview);
+		mainGridAdapter = new MainGridAdapter(this, gridview, 3);
 		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
 
@@ -106,15 +105,17 @@ public class MainActivity extends Activity implements OnClickListener {
         Toast.makeText(this, "A teraz wysylamy: " + (currItem.getAddress() >=0 ? "Adres: " + currItem.getAddress() : "") + " Grupa: " + currItem.getGroup() , Toast.LENGTH_SHORT).show();
     }
 	
-	public void addToCanvas(GlobalItem item) {
-		mainGridAdapter.addToCurrentPage(item);
-		gridview.notifyDataSetChanged();
-		
-		setLongClickToGridView(); // TODO: why I need to do it everytime when I change a model??
+	public void addToCurrentPage(GlobalItem item) {
+		if (!mainGridAdapter.hasItem(item)) {
+			mainGridAdapter.addToPage(gridview.currentPage(), item);
+			gridview.notifyDataSetChanged();
+			
+			setLongClickToGridView(); // TODO: why I need to do it everytime when I change a model??
+		}
 	}
 	
 	public void removeFromCanvas(GlobalItem item) {
-		mainGridAdapter.deleteItem(0, item);
+		mainGridAdapter.deleteItem(item);
 		gridview.notifyDataSetChanged();
 		
 		setLongClickToGridView();
