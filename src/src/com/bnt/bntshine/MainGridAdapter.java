@@ -34,9 +34,6 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		this.gridview = gridview;
 		
 		Page page1 = new Page();
-		List<Item> items = new ArrayList<Item>();
-		items.add(new Item(1, "Item 1", R.drawable.ic_launcher));
-		page1.setItems(items);
 		pages.add(page1);
 	}
 
@@ -45,7 +42,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		return pages.size();
 	}
 
-	private List<Item> itemsInPage(int page) {
+	private List<GlobalItem> itemsInPage(int page) {
 		if (pages.size() > page) {
 			return pages.get(page).getItems();
 		}	
@@ -59,8 +56,8 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		layout.setOrientation(LinearLayout.VERTICAL);
 		
 		ImageView icon = new ImageView(context);
-		Item item = getItem(page, index);
-		icon.setImageResource(item.getDrawable());
+		GlobalItem item = getItem(page, index);
+		icon.setImageResource(item.getIcon());
 		icon.setPadding(15, 15, 15, 15);
 		
 		layout.addView(icon);
@@ -99,8 +96,8 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
         }
     }
 
-	private Item getItem(int page, int index) {
-		List<Item> items = itemsInPage(page);
+	private GlobalItem getItem(int page, int index) {
+		List<GlobalItem> items = itemsInPage(page);
 		return items.get(index);
 	}
 
@@ -124,8 +121,8 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		for (Page page : pages) {
 			Log.d("Page", Integer.toString(i++));
 			
-			for (Item item : page.getItems()) {
-				Log.d("Item", Long.toString(item.getId()));
+			for (GlobalItem item : page.getItems()) {
+				Log.d("Item", item.getName());
 			}
 		}
 	}
@@ -146,7 +143,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 			Page startpage = getPage(pageIndex);
 			Page landingPage = getPage(leftPageIndex);
 			
-			Item item = startpage.removeItem(itemIndex);
+			GlobalItem item = startpage.removeItem(itemIndex);
 			landingPage.addItem(item);	
 		}	
 	}
@@ -158,7 +155,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 			Page startpage = getPage(pageIndex);
 			Page landingPage = getPage(rightPageIndex);
 			
-			Item item = startpage.removeItem(itemIndex);
+			GlobalItem item = startpage.removeItem(itemIndex);
 			landingPage.addItem(item);			
 		}	
 	}
@@ -167,9 +164,17 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 	public void deleteItem(int pageIndex, int itemIndex) {
 		getPage(pageIndex).deleteItem(itemIndex);
 	}
+	
+	public void deleteItem(int pageIndex, GlobalItem item) {
+		getPage(pageIndex).deleteItem(item);
+	}
 
     @Override
     public int deleteDropZoneLocation() {        
         return BOTTOM;
+    }
+    
+    public void addToCurrentPage(GlobalItem item) {
+    	pages.get(0).addItem(item);
     }
 }

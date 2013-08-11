@@ -20,6 +20,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private GlobalOffAction globalOff;
 	private PagedDragDropGrid gridview;
 	private MenuBranch menuBranch;
+	private MainGridAdapter mainGridAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
+		items.clear();
 		items.add(new GlobalItem("Lewa lampa", 12, 0));
+		items.add(new GlobalItem("Prawa lampa", 13, 0));
 		
 		init();
 	}
@@ -75,7 +78,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		menuBranch = new MenuBranch(this);
 		
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
-		gridview.setAdapter(new MainGridAdapter(this, gridview));
+		mainGridAdapter = new MainGridAdapter(this, gridview);
+		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
 		
 		gridview.setBackgroundColor(Color.LTGRAY);
@@ -101,4 +105,14 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         Toast.makeText(this, "Clicked View", Toast.LENGTH_SHORT).show();
     }
+	
+	public void addToCanvas(GlobalItem item) {
+		mainGridAdapter.addToCurrentPage(item);
+		gridview.notifyDataSetChanged();
+	}
+	
+	public void removeFromCanvas(GlobalItem item) {
+		mainGridAdapter.deleteItem(0, item);
+		gridview.notifyDataSetChanged();
+	}
 }

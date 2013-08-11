@@ -4,6 +4,7 @@ public class GlobalItem {
 	private String name;
 	private int group;
 	private int type; //i know what enum is, but I think int should be easier to use here.
+	private boolean onBoard;
 	
 	private static final int ICONS[] = {R.drawable.ic_launcher};
 	private static final String TYPE_NAME[] = {"OŚWIETLENIE", "ROLETY"};
@@ -32,5 +33,13 @@ public class GlobalItem {
 
 	public static String getTypeName(int type) {
 		return TYPE_NAME[type];
+	}
+
+	public boolean getOnBoard() {
+		return onBoard;
+	}
+	
+	public void setOnBoard(boolean value) {
+		onBoard = value;
 	}
 }
