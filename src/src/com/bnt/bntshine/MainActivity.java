@@ -35,7 +35,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		items.add(new GlobalItem("Prawa lampa", 13, 5, 1, mainGridAdapter));
 		items.add(new GlobalItem("Roleta w łazience", 73, 2, 2, mainGridAdapter));
 		items.add(new GlobalItem("Grupa lamp", 2, -1, 4, mainGridAdapter));
-		items.add(new GlobalItem("Grupa rolet", 3, -1, 8, mainGridAdapter));
+		GlobalItem it = new GlobalItem("Grupa rolet", 3, -1, 8, mainGridAdapter);
+		items.add(it);
+		addToCurrentPage(it);
 	}
 
 	@Override
