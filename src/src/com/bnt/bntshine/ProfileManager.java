@@ -2,7 +2,8 @@ package com.bnt.bntshine;
 
 import java.util.List;
 
-import android.app.Activity;
+import com.bnt.bntshine.activities.MainActivity;
+
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 

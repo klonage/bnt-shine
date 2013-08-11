@@ -1,4 +1,10 @@
-package com.bnt.bntshine;
+package com.bnt.bntshine.activities;
+
+import com.bnt.bntshine.AppConfiguration;
+import com.bnt.bntshine.R;
+import com.bnt.bntshine.R.id;
+import com.bnt.bntshine.R.layout;
+import com.bnt.bntshine.R.menu;
 
 import android.app.Activity;
 import android.content.SharedPreferences;

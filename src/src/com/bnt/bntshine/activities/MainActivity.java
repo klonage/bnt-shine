@@ -1,6 +1,19 @@
-package com.bnt.bntshine;
+package com.bnt.bntshine.activities;
 
 import java.util.List;
+
+import com.bnt.bntshine.AppConfiguration;
+import com.bnt.bntshine.CallerInterface;
+import com.bnt.bntshine.GlobalItem;
+import com.bnt.bntshine.GlobalOffAction;
+import com.bnt.bntshine.MainGridAdapter;
+import com.bnt.bntshine.MenuBranch;
+import com.bnt.bntshine.MyApplication;
+import com.bnt.bntshine.ProfileManager;
+import com.bnt.bntshine.R;
+import com.bnt.bntshine.R.id;
+import com.bnt.bntshine.R.layout;
+import com.bnt.bntshine.R.menu;
 
 import android.app.Activity;
 import android.app.AlertDialog;

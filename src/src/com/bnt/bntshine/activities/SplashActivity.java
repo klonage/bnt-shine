@@ -1,4 +1,7 @@
-package com.bnt.bntshine;
+package com.bnt.bntshine.activities;
+
+import com.bnt.bntshine.R;
+import com.bnt.bntshine.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;

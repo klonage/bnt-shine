@@ -18,7 +18,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.bnt.bntshine.SplashActivity" >
+        <activity android:name="com.bnt.bntshine.activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,30 +26,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bnt.bntshine.MainActivity"
+            android:name="com.bnt.bntshine.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bnt.bntshine.SettingsActivity"
+            android:name="com.bnt.bntshine.activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.bnt.bntshine.HelpActivity"
+            android:name="com.bnt.bntshine.activities.HelpActivity"
             android:label="@string/title_activity_help" >
         </activity>
         <activity
-            android:name="com.bnt.bntshine.NetworkSettingsActivity"
+            android:name="com.bnt.bntshine.activities.NetworkSettingsActivity"
             android:label="@string/title_activity_network_settings" >
         </activity>
-        <activity
-            android:name="com.bnt.bntshine.GlobalOffSettingsActivity"
+ 		<activity
+            android:name="com.bnt.bntshine.activities.GlobalOffSettingsActivity"
             android:label="@string/title_activity_global_off_settings" >
         </activity>
         <activity
-            android:name="com.bnt.bntshine.ProfileActivity"
+            android:name="com.bnt.bntshine.activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
     </application>

@@ -1,5 +1,7 @@
 package com.bnt.bntshine;
 
+import com.bnt.bntshine.activities.MainActivity;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;

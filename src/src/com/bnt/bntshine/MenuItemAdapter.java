@@ -2,6 +2,8 @@ package com.bnt.bntshine;
 
 import java.util.List;
 
+import com.bnt.bntshine.activities.MainActivity;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;

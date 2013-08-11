@@ -3,6 +3,8 @@ package com.bnt.bntshine;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bnt.bntshine.activities.MainActivity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.widget.ListAdapter;
