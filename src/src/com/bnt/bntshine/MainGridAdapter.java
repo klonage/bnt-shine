@@ -100,6 +100,15 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		List<GlobalItem> items = itemsInPage(page);
 		return items.get(index);
 	}
+	
+	public boolean hasItem(GlobalItem item) {
+		for (int i = 0; i < pageCount(); i++) {
+			if (pages.get(i).getItems().contains(item))
+				return true;
+		}
+		
+		return false;
+	}
 
 	@Override
 	public int rowCount() {

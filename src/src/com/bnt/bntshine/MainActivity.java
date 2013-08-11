@@ -25,18 +25,18 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	
+		
+		init();
+		
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
 		items.clear();
-		items.add(new GlobalItem("Lewa lampa", 12, 1, 1));
-		items.add(new GlobalItem("Roleta w kuchni", 42, 2, 2));
-		items.add(new GlobalItem("Prawa lampa", 13, 5, 1));
-		items.add(new GlobalItem("Roleta w łazience", 73, 2, 2));
-		items.add(new GlobalItem("Grupa lamp", 2, -1, 4));
-		items.add(new GlobalItem("Grupa rolet", 3, -1, 8));
-		
-		init();
+		items.add(new GlobalItem("Lewa lampa", 12, 1, 1, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w kuchni", 42, 2, 2, mainGridAdapter));
+		items.add(new GlobalItem("Prawa lampa", 13, 5, 1, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w łazience", 73, 2, 2, mainGridAdapter));
+		items.add(new GlobalItem("Grupa lamp", 2, -1, 4, mainGridAdapter));
+		items.add(new GlobalItem("Grupa rolet", 3, -1, 8, mainGridAdapter));
 	}
 
 	@Override

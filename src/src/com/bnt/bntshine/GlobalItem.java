@@ -1,11 +1,14 @@
 package com.bnt.bntshine;
 
+import android.widget.Adapter;
+
 public class GlobalItem {
 	private String name;
 	private int group;
 	private int address;
 	private int type; //i know what enum is, but I think int should be easier to use here.
-	private boolean onBoard;
+//	private boolean onBoard;
+	private MainGridAdapter parentAdapter;
 	
 	private static final int ICONS[];
 	private static final String TYPE_NAME[];
@@ -28,11 +31,12 @@ public class GlobalItem {
 		TYPE_NAME[8] = "ROLETY";
 	}
 	
-	public GlobalItem(String name, int group, int address, int type) {
+	public GlobalItem(String name, int group, int address, int type, MainGridAdapter adapter) {
 		this.name = name;
 		this.group = group;
 		this.address = address;
 		this.type = type;
+		this.parentAdapter = adapter;
 	}
 	
 	public String getName() {
@@ -60,10 +64,10 @@ public class GlobalItem {
 	}
 
 	public boolean getOnBoard() {
-		return onBoard;
+		return parentAdapter.hasItem(this);
 	}
 	
 	public void setOnBoard(boolean value) {
-		onBoard = value;
+		parentAdapter.addToCurrentPage(this);
 	}
 }
