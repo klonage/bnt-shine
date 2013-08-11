@@ -6,8 +6,20 @@ public class GlobalItem {
 	private int type; //i know what enum is, but I think int should be easier to use here.
 	private boolean onBoard;
 	
-	private static final int ICONS[] = {0, R.drawable.ic_launcher, R.drawable.ic_launcher};
-	private static final String TYPE_NAME[] = {"", "OŚWIETLENIE", "ROLETY", "WSZYSTKIE URZĄDZENIA"};
+	private static final int ICONS[];
+	private static final String TYPE_NAME[];
+	
+	static {
+		ICONS = new int [8]; TYPE_NAME = new String[8];
+		
+		ICONS[1] = R.drawable.ic_launcher;
+		TYPE_NAME[1] = "OŚWIETLENIE";
+		
+		ICONS[2] = R.drawable.ic_launcher;
+		TYPE_NAME[2] = "ROLETY";
+		
+		TYPE_NAME[3] = "WSZYSTKIE URZĄDZENIA";
+	}
 	
 	public GlobalItem(String name, int group, int type) {
 		this.name = name;
