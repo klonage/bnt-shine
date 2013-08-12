@@ -2,12 +2,10 @@ package com.bnt.bntshine.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.GpsStatus.NmeaListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-import com.bnt.bntshine.NamesSettingsActivity;
 import com.bnt.bntshine.R;
 
 public class SettingsActivity extends Activity {
