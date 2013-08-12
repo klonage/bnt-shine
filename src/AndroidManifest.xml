@@ -44,13 +44,17 @@
             android:name="com.bnt.bntshine.activities.NetworkSettingsActivity"
             android:label="@string/title_activity_network_settings" >
         </activity>
- 		<activity
+        <activity
             android:name="com.bnt.bntshine.activities.GlobalOffSettingsActivity"
             android:label="@string/title_activity_global_off_settings" >
         </activity>
         <activity
             android:name="com.bnt.bntshine.activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.bnt.bntshine.NamesSettingsActivity"
+            android:label="@string/title_activity_names_settings" >
         </activity>
     </application>
 

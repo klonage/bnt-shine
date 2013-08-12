@@ -2,10 +2,12 @@ package com.bnt.bntshine.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.GpsStatus.NmeaListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+import com.bnt.bntshine.NamesSettingsActivity;
 import com.bnt.bntshine.R;
 
 public class SettingsActivity extends Activity {
@@ -40,6 +42,11 @@ public class SettingsActivity extends Activity {
 	
 	public void showProfileSettingsClick(View view) {
 		Intent intent = new Intent(this, ProfileActivity.class);
+		startActivity(intent);
+	}
+	
+	public void showEditNamesSettingsClick(View view) {
+		Intent intent = new Intent(this, NamesSettingsActivity.class);
 		startActivity(intent);
 	}
 
