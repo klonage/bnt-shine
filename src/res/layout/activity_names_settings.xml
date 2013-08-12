@@ -35,6 +35,7 @@
             android:layout_height="58dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:onClick="notImplementedFunctionClick"
             android:text="@string/edytuj_nazwy_scen" />
 
     </LinearLayout>

@@ -16,6 +16,7 @@ import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 
 import com.bnt.bntshine.AppConfiguration;
 import com.bnt.bntshine.CallerInterface;
+import com.bnt.bntshine.Common;
 import com.bnt.bntshine.GlobalItem;
 import com.bnt.bntshine.GlobalOffAction;
 import com.bnt.bntshine.MainGridAdapter;
@@ -60,19 +61,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	public void notImplementedFunctionClick(View view) {
-		notImplementedFunctionAlert();
-	}
-
-	public void notImplementedFunctionAlert() {
-		AlertDialog alertDialog;
-		alertDialog = new AlertDialog.Builder(this).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		}).create();
-		alertDialog.setTitle("Funkcja niedostępna");
-		alertDialog.setMessage("Obecnie funkcjonalność nie jest dostępna.");
-		alertDialog.show();
+		Common.notImplementedFunctionAlert(this);
 	}
 
 	public void showSettingsActivityClick(View view) {

@@ -58,7 +58,7 @@ public class MenuBranch {
 			MenuBranch.this.addGroupList();
 			break;
 		case 2:
-			activity.notImplementedFunctionAlert();
+			Common.notImplementedFunctionAlert(activity);
 		}
 	}
 
