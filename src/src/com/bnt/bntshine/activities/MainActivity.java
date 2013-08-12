@@ -96,6 +96,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		profileManager.setActivity(this);
 		profileManager.setAdapter(mainGridAdapter);
 		profileManager.loadFromConfigFile();
+		mainGridAdapter.setProfileManager(profileManager);
 		gridview.setAdapter(mainGridAdapter);
 		gridview.setClickListener(this);
 
@@ -134,14 +135,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			gridview.notifyDataSetChanged();
 
 			setLongClickToGridView(); // TODO: why I need to do it everytime when I change a model??
-			profileManager.saveToConfigFile();
 		}
 	}
 
 	public void removeFromCanvas(GlobalItem item) {
 		mainGridAdapter.deleteItem(item);
 		gridview.notifyDataSetChanged();
-		profileManager.saveToConfigFile();
 		setLongClickToGridView();
 	}
 	

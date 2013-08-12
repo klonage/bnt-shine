@@ -26,6 +26,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 	private Context context;
 	private PagedDragDropGrid gridview;
 	
+	ProfileManager profileManager;
 	List<Page> pages = new ArrayList<Page>();
 	
 	public MainGridAdapter(Context context, PagedDragDropGrid gridview, int pageCount) {
@@ -36,6 +37,10 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		for (int i = 0; i < pageCount; i++) {
 			pages.add(new Page());
 		}
+	}
+	
+	public void setProfileManager(ProfileManager profileManager) {
+		this.profileManager = profileManager;
 	}
 
 	@Override
@@ -145,7 +150,8 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 	@Override
 	public void swapItems(int pageIndex, int itemIndexA, int itemIndexB) {
 		getPage(pageIndex).swapItems(itemIndexA, itemIndexB);
-	}
+		profileManager.saveToConfigFile();
+	} 
 
 	@Override
 	public void moveItemToPreviousPage(int pageIndex, int itemIndex) {
@@ -157,6 +163,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 			GlobalItem item = startpage.removeItem(itemIndex);
 			landingPage.addItem(item);	
 		}	
+		profileManager.saveToConfigFile();
 	}
 
 	@Override
@@ -169,11 +176,13 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 			GlobalItem item = startpage.removeItem(itemIndex);
 			landingPage.addItem(item);			
 		}	
+		profileManager.saveToConfigFile();
 	}
 
 	@Override
 	public void deleteItem(int pageIndex, int itemIndex) {
 		getPage(pageIndex).deleteItem(itemIndex);
+		profileManager.saveToConfigFile();
 	}
 	
 	public void deleteItem(GlobalItem item) {
@@ -183,6 +192,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 				return;
 			}
 		}
+		profileManager.saveToConfigFile();
 	}
 
     @Override
@@ -192,5 +202,6 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
     
     public void addToPage(int page, GlobalItem item) {
     	getPage(page).addItem(item);
+    	profileManager.saveToConfigFile();
     }
 }
