@@ -44,5 +44,7 @@
     <string name="title_activity_names_settings">NamesSettingsActivity</string>
     <string name="edytuj_nazwy_grup">EDYTUJ NAZWY GRUP</string>
     <string name="edytuj_nazwy_scen">EDYTUJ NAZWY SCEN</string>
+    <string name="title_activity_device_list">DeviceListActivity</string>
+    <string name="zapisz_nazwy_do_serwera">ZAPISZ NAZWY DO SERWERA</string>
 
 </resources>
