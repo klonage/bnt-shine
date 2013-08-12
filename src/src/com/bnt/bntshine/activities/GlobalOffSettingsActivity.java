@@ -1,20 +1,17 @@
 package com.bnt.bntshine.activities;
 
-import com.bnt.bntshine.AppConfiguration;
-import com.bnt.bntshine.R;
-import com.bnt.bntshine.R.id;
-import com.bnt.bntshine.R.layout;
-import com.bnt.bntshine.R.menu;
-
-import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+
+import com.bnt.bntshine.AppConfiguration;
+import com.bnt.bntshine.R;
 
 public class GlobalOffSettingsActivity extends Activity {
 	private static final int choiceCount = 4;

@@ -1,14 +1,13 @@
 package com.bnt.bntshine.activities;
 
-import com.bnt.bntshine.R;
-import com.bnt.bntshine.R.layout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.bnt.bntshine.R;
 
 public class SplashActivity extends Activity {
 

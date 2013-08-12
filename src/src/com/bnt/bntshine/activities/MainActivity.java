@@ -2,19 +2,6 @@ package com.bnt.bntshine.activities;
 
 import java.util.List;
 
-import com.bnt.bntshine.AppConfiguration;
-import com.bnt.bntshine.CallerInterface;
-import com.bnt.bntshine.GlobalItem;
-import com.bnt.bntshine.GlobalOffAction;
-import com.bnt.bntshine.MainGridAdapter;
-import com.bnt.bntshine.MenuBranch;
-import com.bnt.bntshine.MyApplication;
-import com.bnt.bntshine.ProfileManager;
-import com.bnt.bntshine.R;
-import com.bnt.bntshine.R.id;
-import com.bnt.bntshine.R.layout;
-import com.bnt.bntshine.R.menu;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,6 +13,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
+
+import com.bnt.bntshine.AppConfiguration;
+import com.bnt.bntshine.CallerInterface;
+import com.bnt.bntshine.GlobalItem;
+import com.bnt.bntshine.GlobalOffAction;
+import com.bnt.bntshine.MainGridAdapter;
+import com.bnt.bntshine.MenuBranch;
+import com.bnt.bntshine.MyApplication;
+import com.bnt.bntshine.ProfileManager;
+import com.bnt.bntshine.R;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private GlobalOffAction globalOff;

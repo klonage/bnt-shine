@@ -1,18 +1,16 @@
 package com.bnt.bntshine.activities;
 
-import com.bnt.bntshine.MyApplication;
-import com.bnt.bntshine.R;
-import com.bnt.bntshine.R.layout;
-import com.bnt.bntshine.R.menu;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
+
+import com.bnt.bntshine.MyApplication;
+import com.bnt.bntshine.R;
 
 public class ProfileActivity extends Activity {
 

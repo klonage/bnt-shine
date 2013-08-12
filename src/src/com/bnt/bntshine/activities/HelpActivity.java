@@ -1,10 +1,5 @@
 package com.bnt.bntshine.activities;
 
-import com.bnt.bntshine.AppConfiguration;
-import com.bnt.bntshine.R;
-import com.bnt.bntshine.R.layout;
-import com.bnt.bntshine.R.menu;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
+
+import com.bnt.bntshine.AppConfiguration;
+import com.bnt.bntshine.R;
 
 public class HelpActivity extends Activity {
 
