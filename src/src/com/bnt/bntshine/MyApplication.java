@@ -1,6 +1,7 @@
 package com.bnt.bntshine;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Application;
 
@@ -21,5 +22,16 @@ public class MyApplication extends Application {
 
 	public ArrayList<GlobalItem> getAllItems() {
 		return allItems;
+	}
+	
+	public List<GlobalItem> getFromType(int type) {
+		List<GlobalItem> selected = new ArrayList<GlobalItem>();
+		
+		for (GlobalItem globalItem : allItems) {
+			if ((globalItem.getType() & type) != 0)
+				selected.add(globalItem);
+		}
+		
+		return selected;
 	}
 }

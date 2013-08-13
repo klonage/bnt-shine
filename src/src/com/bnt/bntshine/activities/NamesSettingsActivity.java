@@ -30,6 +30,13 @@ public class NamesSettingsActivity extends Activity {
 	
 	public void onEditMainNamesClick(View view) {
 		Intent intent = new Intent(this, DeviceListActivity.class);
+		intent.putExtra("type", 3);
+		startActivity(intent);
+	}
+	
+	public void onEditGroupsClick(View view) {
+		Intent intent = new Intent(this, DeviceListActivity.class);
+		intent.putExtra("type", 12);
 		startActivity(intent);
 	}
 }

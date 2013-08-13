@@ -19,6 +19,7 @@
             android:layout_height="58dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:onClick="onEditMainNamesClick"
             android:text="@string/action_settings" />
 
         <Button
@@ -27,6 +28,7 @@
             android:layout_height="58dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:onClick="onEditGroupsClick"
             android:text="@string/edytuj_nazwy_grup" />
 
         <Button

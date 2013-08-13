@@ -1,14 +1,13 @@
 package com.bnt.bntshine;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.bnt.bntshine.activities.MainActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.widget.ListAdapter;
 import android.widget.Toast;
+
+import com.bnt.bntshine.activities.MainActivity;
 
 public class MenuBranch {
 	MainActivity activity;
@@ -106,20 +105,8 @@ public class MenuBranch {
 	}
 
 	private void manageSpecifiedDevices(int type) {
-		final List<GlobalItem> toShowItems = getFromType(type);
+		final List<GlobalItem> toShowItems = ((MyApplication)activity.getApplication()).getFromType(type);
 		
 		generateSelectionDialog(GlobalItem.getTypeName(type), toShowItems).show();
-	}
-
-	private List<GlobalItem> getFromType(int type) {
-		List<GlobalItem> allItems = ((MyApplication) activity.getApplication()).getAllItems();
-		List<GlobalItem> selected = new ArrayList<GlobalItem>();
-		
-		for (GlobalItem globalItem : allItems) {
-			if ((globalItem.getType() & type) != 0)
-				selected.add(globalItem);
-		}
-		
-		return selected;
 	}
 }

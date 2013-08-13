@@ -39,6 +39,10 @@ public class GlobalItem {
 		this.userName = "";
 	}
 	
+	public GlobalItem clone() {
+		return new GlobalItem(name, group, address, type, parentAdapter);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -73,5 +77,9 @@ public class GlobalItem {
 
 	public void setUserName(String userName) {
 		this.userName = userName;		
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
