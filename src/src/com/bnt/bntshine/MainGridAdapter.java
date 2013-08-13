@@ -39,6 +39,10 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		}
 	}
 	
+	public void notifyParentOnChange() {
+		gridview.notifyDataSetChanged();
+	}
+	
 	public void setProfileManager(ProfileManager profileManager) {
 		this.profileManager = profileManager;
 	}
@@ -70,7 +74,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		
 		TextView label = new TextView(context);
 		label.setTag("text");
-		label.setText(item.getName());	
+		label.setText(item.getUserName().equals("") ? item.getName() : item.getUserName());	
 		label.setTextColor(Color.BLACK);
 		label.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
 	
@@ -145,6 +149,10 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 
 	public Page getPage(int pageIndex) {
 		return pages.get(pageIndex);
+	}
+	
+	public List<Page> getPages() {
+		return pages;
 	}
 
 	@Override

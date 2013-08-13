@@ -60,6 +60,10 @@
             android:name="com.bnt.bntshine.activities.DeviceListActivity"
             android:label="@string/title_activity_device_list" >
         </activity>
+        <activity
+            android:name="com.bnt.bntshine.activities.CustomNamesActivity"
+            android:label="@string/title_activity_custom_names" >
+        </activity>
     </application>
 
 </manifest>

@@ -64,6 +64,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public void showSettingsActivityClick(View view) {
 		Intent intent = new Intent(this, SettingsActivity.class);
+		
 		startActivity(intent);
 	}
 
@@ -93,6 +94,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private void createMainGrid() {
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
 		mainGridAdapter = new MainGridAdapter(this, gridview, AppConfiguration.getPagesCount());
+		((MyApplication) getApplication()).setPages(mainGridAdapter.getPages());
 	}
 
 	private void setLongClickToGridView() {

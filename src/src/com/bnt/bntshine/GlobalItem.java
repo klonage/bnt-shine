@@ -82,4 +82,8 @@ public class GlobalItem {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void notifyAdapter() {
+		parentAdapter.notifyParentOnChange();
+	}
 }

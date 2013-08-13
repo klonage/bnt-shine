@@ -16,8 +16,11 @@ import com.bnt.bntshine.R;
 
 
 public class SimpleItemAdapter extends ArrayAdapter<GlobalItem> {
-	public SimpleItemAdapter(Context context, List<GlobalItem> items) {
+	private boolean isCustomNames = false;
+	//TODO: IT IS THE WORST HACK EVER!!!
+	public SimpleItemAdapter(Context context, List<GlobalItem> items, boolean isCustomNames) {
 	    super(context, android.R.layout.select_dialog_item, items);
+	    this.isCustomNames = isCustomNames;
 	}
 	
     ViewHolder holder;
@@ -54,7 +57,7 @@ public class SimpleItemAdapter extends ArrayAdapter<GlobalItem> {
         
         Drawable drawable = getContext().getResources().getDrawable(getItem(position).getIcon());
 
-        holder.title.setText("Nazwa: " + currItem.getName());
+        holder.title.setText((isCustomNames && !currItem.getUserName().equals("") ? "Nazwa użytkownika: " + currItem.getUserName() + " " : "") + "Nazwa główna: " + currItem.getName());
         holder.icon.setImageDrawable(drawable);
         holder.description.setText((currItem.getAddress()>=0 ? "Adres: " + currItem.getAddress() : "") +
         		" Grupa: " + currItem.getGroup());

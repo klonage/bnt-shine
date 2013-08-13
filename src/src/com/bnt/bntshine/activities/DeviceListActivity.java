@@ -48,7 +48,7 @@ public class DeviceListActivity extends Activity {
 		  copy.add(i.clone());
 		}
 		ListView listView = (ListView) findViewById(R.id.devicesListView);
-		final SimpleItemAdapter adapter = new SimpleItemAdapter(this, copy);
+		final SimpleItemAdapter adapter = new SimpleItemAdapter(this, copy, false);
 		listView.setAdapter(adapter);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
@@ -65,6 +65,11 @@ public class DeviceListActivity extends Activity {
 				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
 				  String value = input.getText().toString();
+				  
+				  if (value.equals("")) {
+					  Toast.makeText(DeviceListActivity.this, "Nazwa nie może pozostać pusta.", Toast.LENGTH_LONG).show();
+					  return;
+				  }
 				  
 				  for (int i = 0; i < copy.size(); i++) {
 					  if (i != position && value.equals(copy.get(i).getName())) {

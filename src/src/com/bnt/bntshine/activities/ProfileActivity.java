@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -76,5 +77,10 @@ public class ProfileActivity extends Activity {
 		        }
 		    }
 		}).setNegativeButton("NIE", null).show();
+	}
+	
+	public void customNamesClick(View view) {
+		Intent intent = new Intent(this, CustomNamesActivity.class);
+		startActivity(intent);
 	}
 }

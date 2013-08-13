@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.bnt.bntshine.AppConfiguration;
@@ -36,9 +37,16 @@ public class NetworkSettingsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.network_settings, menu);
 		return true;
 	}
+	
+	@Override
+	public void onStop() {
+		saveSettings(); 
+		
+		super.onStop();
+	}
 
 	public void changeAddressClick(View view) {
-		saveSettings();
+		Toast.makeText(this, "Taa, jasne. Napisz ten serwer najpierw, synek.", Toast.LENGTH_SHORT).show();
 	}
 	
 	private void initPrivateFields() {
