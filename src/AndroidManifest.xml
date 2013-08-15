@@ -64,6 +64,10 @@
             android:name="com.bnt.bntshine.activities.CustomNamesActivity"
             android:label="@string/title_activity_custom_names" >
         </activity>
+        <activity
+            android:name="com.bnt.bntshine.activities.CalcActivity"
+            android:label="@string/title_activity_calc" >
+        </activity>
     </application>
 
 </manifest>

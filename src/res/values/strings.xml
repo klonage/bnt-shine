@@ -47,5 +47,6 @@
     <string name="title_activity_device_list">DeviceListActivity</string>
     <string name="zapisz_nazwy_do_serwera">ZAPISZ NAZWY DO SERWERA</string>
     <string name="title_activity_custom_names">CustomNamesActivity</string>
+    <string name="title_activity_calc">CalcActivity</string>
 
 </resources>

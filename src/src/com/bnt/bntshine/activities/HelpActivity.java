@@ -52,4 +52,9 @@ public class HelpActivity extends Activity {
 					Toast.LENGTH_LONG).show();
 		}
 	}
+	
+	public void openCalcActivityClick(View view) {
+		Intent intent = new Intent(this, CalcActivity.class);
+		startActivity(intent);
+	}
 }
