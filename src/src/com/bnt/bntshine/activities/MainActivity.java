@@ -1,6 +1,7 @@
 package com.bnt.bntshine.activities;
 
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -39,12 +40,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
+		Map<Integer, String> groups = ((MyApplication) getApplication()).getGroupNames();
 		items.clear();
 		items.add(new GlobalItem("Lewa lampa", 12, 1, 1, mainGridAdapter));
-		items.add(new GlobalItem("Roleta w kuchni", 42, 2, 2, mainGridAdapter));
-		items.add(new GlobalItem("Prawa lampa", 13, 5, 1, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w kuchni", 73, 2, 2, mainGridAdapter));
+		items.add(new GlobalItem("Prawa lampa", 12, 5, 1, mainGridAdapter));
 		items.add(new GlobalItem("Roleta w łazience", 73, 2, 2, mainGridAdapter));
-
+		groups.put(12, "Lampy");
+		groups.put(73, "Rolety");
 		init();
 	}
 
