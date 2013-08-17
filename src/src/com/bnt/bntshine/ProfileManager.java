@@ -1,6 +1,7 @@
 package com.bnt.bntshine;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bnt.bntshine.activities.MainActivity;
 
@@ -36,6 +37,7 @@ public class ProfileManager {
 			editor.putInt("profile.page_" + page + "_" + "_" + i + ".address", item.getAddress());
 			editor.putInt("profile.page_" + page + "_" + "_" + i + ".group", item.getGroup());
 			editor.putString("profile.page_" + page + "_" + "_" + i + ".user_name", item.getUserName());
+			editor.putInt("profile.page_" + page + "_" + "_" + i + ".type", item.getType());
 		}
 
 		editor.commit();
@@ -54,9 +56,10 @@ public class ProfileManager {
 		for (int i = 0; i < cnt; i++) {
 			int address = preferences.getInt("profile.page_" + page  + "_" + "_" + i + ".address", -1);
 			int group = preferences.getInt("profile.page_" + page  + "_" + "_" + i + ".group", -1);
+			int type = preferences.getInt("profile.page_" + page + "_" + "_" + i + ".type", 1);
 			String userName = preferences.getString("profile.page_" + page + "_" + "_" + i +  ".user_name", "");
 			
-			GlobalItem item = getGlobalItem(address, group);
+			GlobalItem item = getGlobalItem(address, group, type);
 			
 			if (item != null) {
 				item.setUserName(userName);
@@ -65,16 +68,25 @@ public class ProfileManager {
 		}
 	}
 	
-	private GlobalItem getGlobalItem(int address, int group) {
+	private GlobalItem getGlobalItem(int address, int group, int type) {
 		List<GlobalItem> items = ((MyApplication) activity.getApplication()).getAllItems();
 		
+		if (address == -1)
+			return getGroupItem(group, type);
+		
 		for (GlobalItem item : items) {
-			if (item.getGroup() == group && item.getAddress() == address) {
+			if (item.getGroup() == group && item.getAddress() == address && item.getType() == type) {
 				return item;
 			}
 		}
 		
 		return null;
+	}
+	
+	private GlobalItem getGroupItem(int group, int type) {
+		Map<Integer, String> names = ((MyApplication) activity.getApplication()).getGroupNames();
+		
+		return new GlobalItem(names.get(group), group, -1, type, adapter);
 	}
 	
 	public void ImportProfile(String fileName) {
