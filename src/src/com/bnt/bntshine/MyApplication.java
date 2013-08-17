@@ -54,7 +54,7 @@ public class MyApplication extends Application {
 		List<GlobalItem> selected = new ArrayList<GlobalItem>();
 		
 		for (GlobalItem globalItem : allItems) {
-			if (!map.containsKey(globalItem.getGroup()) && globalItem.getType() * 4 == type) {
+			if (!map.containsKey(globalItem.getGroup()) && ((globalItem.getType() * 4) & type) != 0) {
 				map.put(globalItem.getGroup(), globalItem.getType() * 4);
 				selected.add(new GlobalItem(groupNames.get(globalItem.getGroup()), globalItem.getGroup(), -1,
 						globalItem.getType() * 4, globalItem.getAdapter()));
