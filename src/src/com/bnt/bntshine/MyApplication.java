@@ -1,8 +1,11 @@
 package com.bnt.bntshine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import android.R.integer;
 import android.app.Application;
 
 public class MyApplication extends Application {
@@ -34,6 +37,29 @@ public class MyApplication extends Application {
 	}
 	
 	public List<GlobalItem> getFromType(int type) {
+		if (type >= 4)
+			return getGroups(type);
+		else
+			return getSingleDevices(type);
+		
+	}
+
+	private List<GlobalItem> getGroups(int type) {
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		List<GlobalItem> selected = new ArrayList<GlobalItem>();
+		
+		for (GlobalItem globalItem : allItems) {
+			if (!map.containsKey(globalItem.getGroup()) && globalItem.getType() * 4 == type) {
+				map.put(globalItem.getGroup(), globalItem.getType() * 4);
+				selected.add(new GlobalItem("", globalItem.getGroup(), -1,
+						globalItem.getType() * 4, globalItem.getAdapter()));
+			}
+		}
+		
+		return selected;
+	}
+
+	private List<GlobalItem> getSingleDevices(int type) {
 		List<GlobalItem> selected = new ArrayList<GlobalItem>();
 		
 		for (GlobalItem globalItem : allItems) {

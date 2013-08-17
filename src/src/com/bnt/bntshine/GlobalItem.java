@@ -83,6 +83,10 @@ public class GlobalItem {
 		this.name = name;
 	}
 	
+	public MainGridAdapter getAdapter() {
+		return parentAdapter;
+	}
+	
 	public void notifyAdapter() {
 		parentAdapter.notifyParentOnChange();
 	}
