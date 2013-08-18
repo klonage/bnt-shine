@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" >
+                android:inputType="number"
+                android:text="0" >
 
                 <requestFocus />
             </EditText>
@@ -51,7 +52,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="0" />
 
         </LinearLayout>
 
@@ -69,8 +71,123 @@
                 android:id="@+id/globalOffToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ToggleButton" />
+                android:text=""
+                android:textOff=" "
+                android:textOn=" " />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="upClick"
+                android:text="UP" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="downClick"
+                android:text="DOWN" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ToggleButton
+                android:id="@+id/tgButton0"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton1"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton2"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton3"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton4"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton5"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton6"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton7"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton8"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton9"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton10"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
+
+            <ToggleButton
+                android:id="@+id/tgButton11"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:textOff=" "
+                android:textOn=" " />
         </LinearLayout>
 
     </LinearLayout>
