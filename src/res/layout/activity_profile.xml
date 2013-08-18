@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:onClick="exportProfileClick"
             android:text="@string/zapisz_profil" />
 
         <Button
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:onClick="importProfileClick"
             android:text="@string/importuj_profil" />
 
         <Button
