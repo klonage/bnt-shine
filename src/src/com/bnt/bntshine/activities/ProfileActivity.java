@@ -95,7 +95,16 @@ public class ProfileActivity extends Activity {
 		    	if (item == 0) { 
 		        	Common.notImplementedFunctionAlert(ProfileActivity.this);
 		        	return;
-		        } 
+		        } else if (item == 1) {
+		        	boolean wasWritten = 
+		        			((MyApplication) getApplication()).getProfileManager().saveToExternalFile("/storage/sdcard0/supereczek.xml");
+		        	
+		        	if (wasWritten) {
+		        		Toast.makeText(ProfileActivity.this, "Pomyślnie zapisano profil.", Toast.LENGTH_SHORT).show();
+		        	} else {
+		        		Toast.makeText(ProfileActivity.this, "Nie udało się zapisać profilu.", Toast.LENGTH_SHORT).show();
+		        	}
+		        }
 		    }
 		});
 		AlertDialog alert = builder.create();
