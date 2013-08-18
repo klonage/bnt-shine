@@ -100,7 +100,7 @@ public class ProfileActivity extends Activity {
 		        	return;
 		        } else if (item == 1) {
 		        	Intent intent = new Intent(ProfileActivity.this, FileBrowserActivity.class);
-		    		
+		    		intent.putExtra("lock", true);
 		    		startActivityForResult(intent, 1);
 		        }
 		    }
@@ -136,6 +136,28 @@ public class ProfileActivity extends Activity {
 	        	}
 			} 
 			break; 
+		case 2:
+			if (resultCode == Activity.RESULT_OK) {
+				String fileName = data.getStringExtra("filename");
+				boolean wasReaded = false;
+				
+				if (!fileName.equals("")) {					
+					wasReaded = ((MyApplication) getApplication()).getProfileManager().readFromExternalFile(fileName);
+				}
+				
+
+	        	ArrayList<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
+	        	if(items.size() > 0) {
+	        		items.get(0).notifyAdapter();
+	        	}
+	        	((MyApplication) getApplication()).getProfileManager().saveToConfigFile();
+	        	if (wasReaded) {
+	        		Toast.makeText(ProfileActivity.this, "Pomyślnie odczytano profil.", Toast.LENGTH_SHORT).show();
+	        	} else {
+	        		Toast.makeText(ProfileActivity.this, "Nie udało się odczytać profilu.", Toast.LENGTH_SHORT).show();
+	        	}
+			}
+			break;
 		} 
 	}
 	
@@ -150,17 +172,9 @@ public class ProfileActivity extends Activity {
 		        	Common.notImplementedFunctionAlert(ProfileActivity.this);
 		        	return;
 		        } else if (item == 1) {
-		        	boolean wasReaded = ((MyApplication) getApplication()).getProfileManager().readFromExternalFile("/storage/sdcard0/supereczek.xml");
-		        	ArrayList<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
-		        	if(items.size() > 0) {
-		        		items.get(0).notifyAdapter();
-		        	}
-		        	((MyApplication) getApplication()).getProfileManager().saveToConfigFile();
-		        	if (wasReaded) {
-		        		Toast.makeText(ProfileActivity.this, "Pomyślnie odczytano profil.", Toast.LENGTH_SHORT).show();
-		        	} else {
-		        		Toast.makeText(ProfileActivity.this, "Nie udało się odczytać profilu.", Toast.LENGTH_SHORT).show();
-		        	}
+		        	Intent intent = new Intent(ProfileActivity.this, FileBrowserActivity.class);
+		        	intent.putExtra("lock", false);
+		    		startActivityForResult(intent, 2);
 		        }
 		    }
 		});

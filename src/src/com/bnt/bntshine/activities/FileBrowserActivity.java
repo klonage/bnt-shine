@@ -33,6 +33,10 @@ public class FileBrowserActivity extends ListActivity {
 
 		root = Environment.getExternalStorageDirectory().getPath();
 
+		boolean shouldLock = getIntent().getExtras().getBoolean("lock");
+		
+		((EditText) findViewById(R.id.editText1)).setEnabled(shouldLock);
+		
 		getDir(root);
 	}
 
