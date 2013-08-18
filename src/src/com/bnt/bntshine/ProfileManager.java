@@ -1,12 +1,14 @@
 package com.bnt.bntshine;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -16,6 +18,9 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import android.content.SharedPreferences;
 import android.os.Environment;
@@ -68,10 +73,10 @@ public class ProfileManager {
 
 		try {
 			Document doc = generateXmlTree();
-			
+
 			if (doc == null) 
 				return false;
-			
+
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			StringWriter writer = new StringWriter();
 			StreamResult result = new StreamResult(writer);
@@ -89,7 +94,7 @@ public class ProfileManager {
 		}
 		return true;
 	}
-	
+
 	private Document generateXmlTree() {
 		Document doc = null;
 		try {
@@ -99,7 +104,7 @@ public class ProfileManager {
 		}
 		Element root = doc.createElement("settings");
 		doc.appendChild(root); 
-		
+
 		for (int page = 0; page < AppConfiguration.getPagesCount(); page++) {
 
 			Element elementPage = doc.createElement("page");
@@ -128,6 +133,45 @@ public class ProfileManager {
 		return false;
 	}
 
+	public boolean readFromExternalFile(String fileName) {
+		try {
+			removeLocalProfile();
+			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+			SharedPreferences.Editor editor = preferences.edit();
+			
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			FileInputStream fis = new FileInputStream(new File(fileName));
+			Document doc = db.parse(new InputSource(fis));
+			doc.getDocumentElement().normalize();
+			NodeList nodeList = doc.getElementsByTagName("page");
+
+			for (int i = 0; i < nodeList.getLength(); i++) {
+
+				Node node = nodeList.item(i);
+				int item_count = Integer.parseInt(((Element) node).getAttribute("items_count"));
+				int page = Integer.parseInt(((Element) node).getAttribute("id"));
+				NodeList list = node.getChildNodes();
+				
+				editor.putInt("profile.page_items_count_" + page, item_count);
+				
+				for (int j = 0; j < list.getLength(); j++) {
+					Node n = list.item(j);
+					Element e = (Element) n;
+					editor.putInt(getPrefixPage(page, j) + ".address", Integer.parseInt(e.getAttribute("address")));
+					editor.putInt(getPrefixPage(page, j) + ".group", Integer.parseInt(e.getAttribute("group")));
+					editor.putString(getPrefixPage(page, j) + ".user_name", e.getAttribute("user_name"));
+					editor.putInt(getPrefixPage(page, j) + ".type", Integer.parseInt(e.getAttribute("type")));
+				}
+			}
+			
+			editor.commit();
+			loadFromConfigFile();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	public void loadFromConfigFile() {
 		for (int i = 0; i < AppConfiguration.getPagesCount(); i++) {
 			loadPageFromConfigFile(i);
@@ -172,14 +216,6 @@ public class ProfileManager {
 		Map<Integer, String> names = ((MyApplication) activity.getApplication()).getGroupNames();
 
 		return new GlobalItem(names.get(group), group, -1, type, adapter);
-	}
-
-	public void ImportProfile(String fileName) {
-
-	}
-
-	public void ExportProfile(String fileName) {
-
 	}
 
 	public void removeLocalProfile() {

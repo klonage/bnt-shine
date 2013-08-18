@@ -49,8 +49,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		groups.put(12, "Lampy");
 		groups.put(73, "Rolety");
 		init();
+		
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setLongClickToGridView();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -1,5 +1,7 @@
 package com.bnt.bntshine.activities;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bnt.bntshine.Common;
+import com.bnt.bntshine.GlobalItem;
 import com.bnt.bntshine.MyApplication;
 import com.bnt.bntshine.R;
 
@@ -121,6 +124,18 @@ public class ProfileActivity extends Activity {
 		        if (item == 0) { 
 		        	Common.notImplementedFunctionAlert(ProfileActivity.this);
 		        	return;
+		        } else if (item == 1) {
+		        	boolean wasReaded = ((MyApplication) getApplication()).getProfileManager().readFromExternalFile("/storage/sdcard0/supereczek.xml");
+		        	ArrayList<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
+		        	if(items.size() > 0) {
+		        		items.get(0).notifyAdapter();
+		        	}
+		        	((MyApplication) getApplication()).getProfileManager().saveToConfigFile();
+		        	if (wasReaded) {
+		        		Toast.makeText(ProfileActivity.this, "Pomyślnie odczytano profil.", Toast.LENGTH_SHORT).show();
+		        	} else {
+		        		Toast.makeText(ProfileActivity.this, "Nie udało się odczytać profilu.", Toast.LENGTH_SHORT).show();
+		        	}
 		        }
 		    }
 		});
