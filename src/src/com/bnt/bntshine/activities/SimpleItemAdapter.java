@@ -60,7 +60,7 @@ public class SimpleItemAdapter extends ArrayAdapter<GlobalItem> {
         holder.title.setText((isCustomNames && !currItem.getUserName().equals("") ? "Nazwa użytkownika: " + currItem.getUserName() + " " : "") + "Nazwa główna: " + currItem.getName());
         holder.icon.setImageDrawable(drawable);
         holder.description.setText((currItem.getAddress()>=0 ? "Adres: " + currItem.getAddress() : "") +
-        		" Grupa: " + currItem.getGroup());
+        		" Grupa: " + currItem.getGroup() + " Typ: " + GlobalItem.getTypeName(currItem.getType()));
         return convertView;
 	}
 }

@@ -16,18 +16,18 @@ public class GlobalItem {
 		ICONS = new int [9]; TYPE_NAME = new String[9];
 		
 		ICONS[1] = R.drawable.ic_launcher;
-		TYPE_NAME[1] = "OŚWIETLENIE";
+		TYPE_NAME[1] = "Oświetlenie";
 		
 		ICONS[2] = R.drawable.ic_launcher;
-		TYPE_NAME[2] = "ROLETY";
+		TYPE_NAME[2] = "Rolety";
 		
 		TYPE_NAME[3] = "WSZYSTKIE URZĄDZENIA";
 		
 		ICONS[4] = R.drawable.ic_launcher;
-		TYPE_NAME[4] = "OŚWIETLENIE";
+		TYPE_NAME[4] = "Oświetlenie";
 		
 		ICONS[8] = R.drawable.ic_launcher;
-		TYPE_NAME[8] = "ROLETY";
+		TYPE_NAME[8] = "Rolety";
 	}
 	
 	public GlobalItem(String name, int group, int address, int type, MainGridAdapter adapter) {
