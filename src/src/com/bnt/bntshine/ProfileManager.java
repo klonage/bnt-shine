@@ -82,6 +82,10 @@ public class ProfileManager {
 			StreamResult result = new StreamResult(writer);
 			transformer.transform(new DOMSource(doc), result);
 			File file = new File(fileName);
+			
+			if(!file.exists()) {
+				file.createNewFile();
+			} 
 
 			FileOutputStream f = new FileOutputStream(file);
 			PrintWriter pw = new PrintWriter(f);

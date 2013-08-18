@@ -99,14 +99,9 @@ public class ProfileActivity extends Activity {
 		        	Common.notImplementedFunctionAlert(ProfileActivity.this);
 		        	return;
 		        } else if (item == 1) {
-		        	boolean wasWritten = 
-		        			((MyApplication) getApplication()).getProfileManager().saveToExternalFile("/storage/sdcard0/supereczek.xml");
-		        	
-		        	if (wasWritten) {
-		        		Toast.makeText(ProfileActivity.this, "Pomyślnie zapisano profil.", Toast.LENGTH_SHORT).show();
-		        	} else {
-		        		Toast.makeText(ProfileActivity.this, "Nie udało się zapisać profilu.", Toast.LENGTH_SHORT).show();
-		        	}
+		        	Intent intent = new Intent(ProfileActivity.this, FileBrowserActivity.class);
+		    		
+		    		startActivityForResult(intent, 1);
 		        }
 		    }
 		});
@@ -114,6 +109,36 @@ public class ProfileActivity extends Activity {
 		alert.show();
 	}
 
+	@Override 
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
+		super.onActivityResult(requestCode, resultCode, data); 
+		switch(requestCode) { 
+		case 1 :  
+			if (resultCode == Activity.RESULT_OK) { 
+				boolean wasSaved = data.getBooleanExtra("ok_save", false);
+				
+				if (!wasSaved) {
+					return;
+				}
+				
+				String fileName = data.getStringExtra("filename");
+				boolean wasWritten = false;
+				
+				if (!fileName.equals("")) {					
+					wasWritten = 
+							((MyApplication) getApplication()).getProfileManager().saveToExternalFile(fileName);
+				}
+	        	
+	        	if (wasWritten) {
+	        		Toast.makeText(ProfileActivity.this, "Pomyślnie zapisano profil.", Toast.LENGTH_SHORT).show();
+	        	} else {
+	        		Toast.makeText(ProfileActivity.this, "Nie udało się zapisać profilu.", Toast.LENGTH_SHORT).show();
+	        	}
+			} 
+			break; 
+		} 
+	}
+	
 	public void importProfileClick(View view) {
 		final CharSequence[] items = {"Filtr faz", "System plików"};
 

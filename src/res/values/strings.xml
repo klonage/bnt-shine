@@ -48,5 +48,8 @@
     <string name="zapisz_nazwy_do_serwera">ZAPISZ NAZWY DO SERWERA</string>
     <string name="title_activity_custom_names">Własne nazwy</string>
     <string name="title_activity_calc">CALC</string>
+    <string name="title_activity_file_browser">FileBrowserActivity</string>
+    <string name="ok">OK</string>
+    <string name="anuluj">Anuluj</string>
 
 </resources>

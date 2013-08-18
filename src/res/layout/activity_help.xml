@@ -24,14 +24,14 @@
             android:contentDescription="@string/bnt_systems"/>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/Anuluj"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="openCalcActivityClick"
             android:text="@string/calc" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/okFileDialogButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
