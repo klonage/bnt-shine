@@ -113,9 +113,29 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 	}
 	
 	public boolean hasItem(GlobalItem item) {
+		if (item.getAddress() == -1) {
+			return hasGroupItem(item);
+		} else {
+			return hasDeviceItem(item);
+		}
+	}
+
+	private boolean hasDeviceItem(GlobalItem item) {
 		for (int i = 0; i < pageCount(); i++) {
 			if (pages.get(i).getItems().contains(item))
 				return true;
+		}
+		
+		return false;
+	}
+
+	private boolean hasGroupItem(GlobalItem item) {
+		for (int i = 0; i < pageCount(); i++) {
+			for (int j = 0; j < pages.get(i).itemsCount(); j++) {
+				GlobalItem it = pages.get(i).getItem(j);
+				if (it.getGroup() == item.getGroup() && it.getType() == item.getType())
+					return true;	
+			}
 		}
 		
 		return false;
@@ -195,7 +215,9 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 	
 	public void deleteItem(GlobalItem item) {
 		for (int i = 0; i < pageCount(); i++) {
-			if (getPage(i).getItems().contains(item)) {
+			if (item.getAddress() == -1) {
+				getPage(i).deleteItem(item);
+			}else if (getPage(i).getItems().contains(item)) {
 				getPage(i).deleteItem(item);
 				return;
 			}

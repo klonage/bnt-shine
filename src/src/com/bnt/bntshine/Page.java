@@ -37,9 +37,28 @@ public class Page {
 	}
 	
 	public void deleteItem(GlobalItem item) {
-		items.remove(item);
+		if (item.getAddress() == -1) {
+			deleteGroupItem(item);
+		} else {
+			deleteDeviceItem(item);
+		}
 	}
 	
+	private void deleteGroupItem(GlobalItem item) {
+		for (int i = 0; i < itemsCount(); i++) {
+			if (getItem(i).getGroup() == item.getGroup() && 
+					getItem(i).getAddress() == item.getAddress() && 
+					getItem(i).getType() == item.getType()) {
+				items.remove(i);
+				return;
+			}
+		}
+	}
+
+	private void deleteDeviceItem(GlobalItem item) {
+		items.remove(item);
+	}
+
 	public int itemsCount() {
 		return items.size();
 	}
