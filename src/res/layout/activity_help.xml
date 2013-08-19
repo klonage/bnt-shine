@@ -20,8 +20,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="2"
-            android:src="@drawable/ic_launcher" 
-            android:contentDescription="@string/bnt_systems"/>
+            android:contentDescription="@string/bnt_systems"
+            android:src="@drawable/bnt_full" />
 
         <Button
             android:id="@+id/Anuluj"
