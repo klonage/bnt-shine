@@ -40,13 +40,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="10dp"
-        android:layout_weight="0"
-        android:src="@drawable/list_longpressed_holo" />
-
 </LinearLayout>
