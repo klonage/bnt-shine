@@ -15,7 +15,7 @@ public class GlobalItem {
 	static {
 		ICONS = new int [9]; TYPE_NAME = new String[9];
 		
-		ICONS[1] = R.drawable.ic_launcher;
+		ICONS[1] = R.drawable.oswietlenie_on;
 		TYPE_NAME[1] = "Oświetlenie";
 		
 		ICONS[2] = R.drawable.ic_launcher;
