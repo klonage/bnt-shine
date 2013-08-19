@@ -66,7 +66,7 @@ public class GlobalOffAction {
 		AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
 		builder.setMessage("Na pewno chcesz wykonać operację GLOBAL OFF?")
 				.setPositiveButton("TAK", dialogClickListener)
-				.setNegativeButton("NIE", dialogClickListener).show();
+				.setNegativeButton("NIE", dialogClickListener).show().setCanceledOnTouchOutside(true);
 	}
 
 	private void showSymbolReader() {
@@ -102,7 +102,7 @@ public class GlobalOffAction {
 		});
 
 		alert.setNegativeButton("Anuluj", null);
-		alert.show();
+		alert.show().setCanceledOnTouchOutside(true);
 	}
 
 	private void changeButtonAction() {

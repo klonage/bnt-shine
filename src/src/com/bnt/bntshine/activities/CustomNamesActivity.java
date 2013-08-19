@@ -83,7 +83,7 @@ public class CustomNamesActivity extends Activity {
 
 				alert.setNegativeButton("Cancel", null);
 
-				alert.show();
+				alert.show().setCanceledOnTouchOutside(true);
 
 			}
 		});

@@ -32,20 +32,24 @@ public class MenuBranch {
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		builder.setTitle(title);
 		builder.setItems(items, listener);
-
-		return builder.create();
+		AlertDialog dialog = builder.create();
+		dialog.setCanceledOnTouchOutside(true);
+		return dialog;
 	}
 
 	private AlertDialog generateSelectionDialog(String title, List<GlobalItem> items) {
+		ListAdapter adapter = new MenuItemAdapter(activity, items);
 
-        ListAdapter adapter = new MenuItemAdapter(activity, items);
+		AlertDialog dialog = new AlertDialog.Builder(activity).setTitle(title)
+				.setAdapter(adapter, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int item ) {
+						Toast.makeText(activity, "Item Selected: " + item, Toast.LENGTH_SHORT).show();
+					}
+				}).create();
 
-        return new AlertDialog.Builder(activity).setTitle(title)
-            .setAdapter(adapter, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int item ) {
-                    Toast.makeText(activity, "Item Selected: " + item, Toast.LENGTH_SHORT).show();
-                }
-     }).create();
+		dialog.setCanceledOnTouchOutside(true);
+
+		return dialog;
 	}
 
 	private void parseHeadDecision(int item) {

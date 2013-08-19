@@ -85,7 +85,7 @@ public class DeviceListActivity extends Activity {
 
 				alert.setNegativeButton("Cancel", null);
 
-				alert.show();
+				alert.show().setCanceledOnTouchOutside(true);
 				
 			}
 		});

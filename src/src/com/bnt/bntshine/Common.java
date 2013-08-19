@@ -14,6 +14,7 @@ public class Common {
 		}).create();
 		alertDialog.setTitle("Funkcja niedostępna");
 		alertDialog.setMessage("Obecnie funkcjonalność nie jest dostępna.");
+		alertDialog.setCanceledOnTouchOutside(true);
 		alertDialog.show();
 	}
 }

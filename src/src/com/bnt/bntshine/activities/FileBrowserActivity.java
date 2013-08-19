@@ -87,7 +87,7 @@ public class FileBrowserActivity extends ListActivity {
 				new AlertDialog.Builder(this)
 				.setIcon(R.drawable.ic_launcher)
 				.setTitle("[" + file.getName() + "] folder nie może zostać otworzony!")
-				.setPositiveButton("OK", null).show(); 
+				.setPositiveButton("OK", null).show().setCanceledOnTouchOutside(true); 
 			} 
 		}else {
 			((EditText) findViewById(R.id.editText1)).setText(file.getName());

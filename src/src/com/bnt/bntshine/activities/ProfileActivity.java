@@ -51,7 +51,9 @@ public class ProfileActivity extends Activity {
 			}
 		});
 
-		builder.create().show();
+		AlertDialog dialog = builder.create();
+		dialog.setCanceledOnTouchOutside(true);
+		dialog.show();
 	}
 	
 	private void removeLocalProfileClick() {
@@ -66,7 +68,7 @@ public class ProfileActivity extends Activity {
 		            break;
 		        }
 		    }
-		}).setNegativeButton("NIE", null).show();
+		}).setNegativeButton("NIE", null).show().setCanceledOnTouchOutside(true);
 	}
 	
 	private void removeRemoteProfileClick() {
@@ -80,7 +82,7 @@ public class ProfileActivity extends Activity {
 		            break;
 		        }
 		    }
-		}).setNegativeButton("NIE", null).show();
+		}).setNegativeButton("NIE", null).show().setCanceledOnTouchOutside(true);
 	}
 	
 	public void customNamesClick(View view) {
@@ -106,6 +108,7 @@ public class ProfileActivity extends Activity {
 		    }
 		});
 		AlertDialog alert = builder.create();
+		alert.setCanceledOnTouchOutside(true);
 		alert.show();
 	}
 
@@ -179,6 +182,7 @@ public class ProfileActivity extends Activity {
 		    }
 		});
 		AlertDialog alert = builder.create();
+		alert.setCanceledOnTouchOutside(true);
 		alert.show();	
 	}
 }
