@@ -29,53 +29,54 @@
 
         <Button
             android:id="@+id/settingsButton"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="-3dp"
-            android:layout_marginLeft="-4dip"
-            android:layout_marginRight="-5dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ustawienia"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/ustawienia"
             android:onClick="showSettingsActivityClick"
-            android:textSize="8sp" />
-
+            android:text="ustawienia"
+            android:textSize="12dp" />
+        
         <Button
-            android:id="@+id/scheduleButton"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="-3dp"
-            android:layout_marginLeft="-4dip"
-            android:layout_marginRight="-5dip"
+            android:id="@+id/harmonogramButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/harmonogram"
+            android:background="@color/transparent"
+            android:drawableTop="@drawable/harmonogram"
             android:onClick="notImplementedFunctionClick"
-            android:textSize="8sp" />
-
-        <Button
-            android:id="@+id/scenesButton"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="-3dp"
-            android:layout_marginLeft="-4dip"
-            android:layout_marginRight="-5dip"
-            android:layout_weight="1"
-            android:text="@string/sceny"
-            android:onClick="notImplementedFunctionClick"
-            android:textSize="8sp" />
-
-        <Button
-            android:id="@+id/globalOffButton"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="-3dp"
-            android:layout_marginLeft="-4dip"
-            android:layout_marginRight="-5dip"
-            android:layout_weight="1"
-            android:onClick="doGlobalOffClick"
-            android:text="@string/global_off"
-            android:textSize="8sp" />
+            android:text="funkcje\nczasowe"
+            android:textSize="12dp" />
+        
+         <Button
+             android:id="@+id/sceneButton"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:background="@color/transparent"
+             android:drawableTop="@drawable/scena"
+             android:onClick="notImplementedFunctionClick"
+             android:text="sceny"
+             android:textSize="12dp" />
+         
+         <Button
+             android:id="@+id/globalOffButton"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:background="@color/transparent"
+             android:drawableTop="@drawable/global_off"
+             android:onClick="doGlobalOffClick"
+             android:text="wyłącz\nwszystko"
+             android:textSize="12dp" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bnt_half" />
 
 </LinearLayout>
