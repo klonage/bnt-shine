@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 
@@ -43,10 +42,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
 		Map<Integer, String> groups = ((MyApplication) getApplication()).getGroupNames();
 		items.clear();
-		items.add(new GlobalItem("Lewa lampa", 12, 1, 1, mainGridAdapter));
+		items.add(new GlobalItem("Lewa lampa z dluga nazwa", 12, 1, 1, mainGridAdapter));
 		items.add(new GlobalItem("Roleta w kuchni", 73, 2, 2, mainGridAdapter));
-		items.add(new GlobalItem("Prawa lampa", 12, 5, 1, mainGridAdapter));
-		items.add(new GlobalItem("Roleta w łazience", 73, 2, 2, mainGridAdapter));
+		items.add(new GlobalItem("Prawa lampa z jeszcze dłuższą nazwą", 12, 5, 1, mainGridAdapter));
+		items.add(new GlobalItem("Środkowa lampa", 12, 42, 1, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w łazience", 73, 32, 2, mainGridAdapter));
 		groups.put(12, "Lampy");
 		groups.put(73, "Rolety");
 		init();

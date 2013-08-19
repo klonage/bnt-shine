@@ -68,12 +68,15 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		ImageView icon = new ImageView(context);
 		GlobalItem item = getItem(page, index);
 		icon.setImageResource(item.getIcon());
-		icon.setPadding(15, 15, 15, 15);
+		icon.setPadding(3, 3, 3, 3);
 		
 		layout.addView(icon);
 		
 		TextView label = new TextView(context);
 		label.setTag("text");
+		label.setWidth(150);
+		label.setMinHeight(65);
+		label.setTextSize(12);
 		label.setText(item.getUserName().equals("") ? item.getName() : item.getUserName());	
 		label.setTextColor(Color.BLACK);
 		label.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
