@@ -18,15 +18,15 @@ public class GlobalItem {
 		ICONS[1] = R.drawable.oswietlenie_on;
 		TYPE_NAME[1] = "Oświetlenie";
 		
-		ICONS[2] = R.drawable.ic_launcher;
+		ICONS[2] = R.drawable.zaluzja_up;
 		TYPE_NAME[2] = "Rolety";
 		
 		TYPE_NAME[3] = "WSZYSTKIE URZĄDZENIA";
 		
-		ICONS[4] = R.drawable.ic_launcher;
+		ICONS[4] = R.drawable.grupa_on;
 		TYPE_NAME[4] = "Oświetlenie";
 		
-		ICONS[8] = R.drawable.ic_launcher;
+		ICONS[8] = R.drawable.zaluzja_up;
 		TYPE_NAME[8] = "Rolety";
 	}
 	
