@@ -5,6 +5,7 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.bnt.bntshine.MenuBranch;
 import com.bnt.bntshine.MyApplication;
 import com.bnt.bntshine.ProfileManager;
 import com.bnt.bntshine.R;
+import com.bnt.bntshine.Sender;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private GlobalOffAction globalOff;
@@ -30,27 +32,47 @@ public class MainActivity extends Activity implements OnClickListener {
 	private MenuBranch menuBranch;
 	private MainGridAdapter mainGridAdapter;
 	private ProfileManager profileManager;
-
+	private Sender sender;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
 		createMainGrid();
-		
+
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
 		Map<Integer, String> groups = ((MyApplication) getApplication()).getGroupNames();
 		items.clear();
 		items.add(new GlobalItem("Lewa lampa z dluga nazwa", 12, 1, 1, mainGridAdapter));
-		items.add(new GlobalItem("Roleta w kuchni", 73, 2, 2, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w kuchni", 1, 2, 2, mainGridAdapter));
 		items.add(new GlobalItem("Prawa lampa z jeszcze dłuższą nazwą", 12, 5, 1, mainGridAdapter));
-		items.add(new GlobalItem("Środkowa lampa", 12, 42, 1, mainGridAdapter));
-		items.add(new GlobalItem("Roleta w łazience", 73, 32, 2, mainGridAdapter));
+		items.add(new GlobalItem("Środkowa lampa", 5, 3, 1, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w łazience", 1, 4, 2, mainGridAdapter));
 		groups.put(12, "Lampy");
-		groups.put(73, "Rolety");
+		groups.put(5, "Inne lampy");
+		groups.put(1, "Rolety");
 		init();
-		
+		sender = new Sender();
+
+
+		EstabilishingConnectionTask estTask = new EstabilishingConnectionTask();
+		try {
+			estTask.execute(sender);
+			synchronized (estTask) {
+				estTask.wait(1000);
+			}
+			estTask.cancel(true);
+			if ( estTask.isConnected() ) {
+				return;
+			} else {
+				Toast.makeText(this, "Przekroczono limit połączenia z serwerem.", Toast.LENGTH_LONG).show();
+			}
+		} catch (Exception e) {
+			Toast.makeText(this, "Nie udało się połączyć z serwerem.", Toast.LENGTH_LONG).show();
+			return;
+		}
+
 	}
 
 	@Override
@@ -58,7 +80,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onResume();
 		setLongClickToGridView();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -72,7 +94,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public void showSettingsActivityClick(View view) {
 		Intent intent = new Intent(this, SettingsActivity.class);
-		
+
 		startActivity(intent);
 	}
 
@@ -98,7 +120,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		setLongClickToGridView();
 	}
-	
+
 	private void createMainGrid() {
 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);		
 		mainGridAdapter = new MainGridAdapter(this, gridview, AppConfiguration.getPagesCount());
@@ -120,10 +142,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		int it = gridview.getClickedItem();
 
 		GlobalItem currItem = mainGridAdapter.getItem(0, it);
-		
+
 		if (currItem == null)
 			return;
-		Toast.makeText(this, "A teraz wysylamy: " + (currItem.getAddress() >=0 ? "Adres: " + currItem.getAddress() : "") + " Grupa: " + currItem.getGroup() , Toast.LENGTH_SHORT).show();
+
+		sender.sendCommand(currItem.getGroup(), currItem.getAddress(), currItem.getType());
 	}
 
 	public void addToCurrentPage(GlobalItem item) {
@@ -140,8 +163,34 @@ public class MainActivity extends Activity implements OnClickListener {
 		gridview.notifyDataSetChanged();
 		setLongClickToGridView();
 	}
-	
+
 	public void refreshMainView() {
 		gridview.notifyDataSetChanged();
+	}
+}
+
+
+class EstabilishingConnectionTask extends
+AsyncTask<Sender, Integer, Boolean> {
+	private boolean connected = false;
+
+	@Override
+	protected void onPostExecute(Boolean result) {
+		connected = result;
+	}
+
+	@Override
+	protected Boolean doInBackground(Sender... client) {
+		if (client.length < 1) {
+			connected = false;
+			return false;
+		}
+
+		connected = client[0].connect(4444);
+		return connected;
+	}
+
+	public boolean isConnected() {
+		return connected;
 	}
 }
