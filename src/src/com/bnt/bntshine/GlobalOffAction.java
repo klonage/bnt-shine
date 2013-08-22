@@ -18,10 +18,12 @@ public class GlobalOffAction {
 	private Context appContext;
 	private String password;
 	private int selectedMethod;
+	private Sender sender;
 
-	public GlobalOffAction(Context applicationContext, Activity parentActivity) {
+	public GlobalOffAction(Context applicationContext, Activity parentActivity, Sender sender) {
 		appContext = applicationContext;
 		this.parentActivity = parentActivity;
+		this.sender = sender;
 
 		reloadConfig();
 	}
@@ -151,9 +153,10 @@ public class GlobalOffAction {
 	}
 
 	private void executeGlobalOff() {
-		// TODO: not implementet, because of no data frame...
-		Toast.makeText(parentActivity, "i cały świat gaśnie...",
+		if (!sender.sendGlobalOffCommand()) {
+			Toast.makeText(parentActivity, "Nie można wysłać polecenia.",
 				Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {

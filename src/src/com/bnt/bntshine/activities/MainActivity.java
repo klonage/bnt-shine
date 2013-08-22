@@ -52,8 +52,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		groups.put(12, "Lampy");
 		groups.put(5, "Inne lampy");
 		groups.put(1, "Rolety");
-		init();
 		sender = new Sender();
+		init();		
 
 
 		EstabilishingConnectionTask estTask = new EstabilishingConnectionTask();
@@ -108,7 +108,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	private void init() {
-		globalOff = new GlobalOffAction(getApplicationContext(), this);
+		globalOff = new GlobalOffAction(getApplicationContext(), this, sender);
 		menuBranch = new MenuBranch(this);
 		profileManager = ((MyApplication) getApplication()).getProfileManager();
 		profileManager.setActivity(this);
@@ -146,7 +146,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (currItem == null)
 			return;
 
-		sender.sendCommand(currItem.getGroup(), currItem.getAddress(), currItem.getType());
+		if (!sender.sendToggleCommand(currItem.getGroup(), currItem.getAddress(), currItem.getType())) {
+			Toast.makeText(this, "Nie można wysłać polecenia do serwera.", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	public void addToCurrentPage(GlobalItem item) {
@@ -186,7 +188,7 @@ AsyncTask<Sender, Integer, Boolean> {
 			return false;
 		}
 
-		connected = client[0].connect(4444);
+		connected = client[0].connect(7);
 		return connected;
 	}
 
