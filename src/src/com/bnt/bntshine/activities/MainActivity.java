@@ -44,14 +44,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
 		Map<Integer, String> groups = ((MyApplication) getApplication()).getGroupNames();
 		items.clear();
-		items.add(new GlobalItem("Lewa lampa z dluga nazwa", 12, 1, 1, mainGridAdapter));
-		items.add(new GlobalItem("Roleta w kuchni", 1, 2, 2, mainGridAdapter));
-		items.add(new GlobalItem("Prawa lampa z jeszcze dłuższą nazwą", 12, 5, 1, mainGridAdapter));
-		items.add(new GlobalItem("Środkowa lampa", 5, 3, 1, mainGridAdapter));
-		items.add(new GlobalItem("Roleta w łazience", 1, 4, 2, mainGridAdapter));
-		groups.put(12, "Lampy");
-		groups.put(5, "Inne lampy");
-		groups.put(1, "Rolety");
+		items.add(new GlobalItem("Urządzenie 1", 0, 1, 1, mainGridAdapter));
+		items.add(new GlobalItem("Urządzenie 2", 0, 2, 1, mainGridAdapter));
+		items.add(new GlobalItem("Urządzenie 3", 0, 3, 1, mainGridAdapter));
+		items.add(new GlobalItem("Urządzenie 4", 0, 4, 1, mainGridAdapter));
+		items.add(new GlobalItem("Urządzenie 5", 0, 5, 1, mainGridAdapter));
+		items.add(new GlobalItem("Urządzenie 6", 1, 6, 1, mainGridAdapter));
+		groups.put(0, "Grupa 0");
+		groups.put(1, "Grupa 1");
 		sender = new Sender();
 		init();		
 

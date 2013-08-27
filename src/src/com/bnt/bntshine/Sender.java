@@ -24,6 +24,7 @@ public class Sender {
 		if (address == -1) {
 			type = type  / 4;
 		}
+		type = 10;
 		buffer[3] = (byte) (((type << 4) | (group & 0x0F)) & 0xFF);
 		buffer[4] = (byte) 3;
 		buffer[5] = 0; buffer[6] = 0; buffer[7] = 0; buffer[8] = 0;
