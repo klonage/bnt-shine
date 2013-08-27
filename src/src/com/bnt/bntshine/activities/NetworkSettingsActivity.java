@@ -55,13 +55,12 @@ public class NetworkSettingsActivity extends Activity {
 					estTask.wait(2000);
 				}
 				estTask.cancel(true);
-				if ( estTask.isConnected() ) {
-					return;
-				} else {
-					Toast.makeText(this, "Przekroczono limit połączenia z serwerem.", Toast.LENGTH_LONG).show();
-				}
+			
+					super.onStop();
+				
 			} catch (Exception e) {
 				Toast.makeText(this, "Nie udało się połączyć z serwerem.", Toast.LENGTH_LONG).show();
+				super.onStop();
 				return;
 			}
 		}
