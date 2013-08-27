@@ -12,12 +12,14 @@ public class MyApplication extends Application {
 	private Map<Integer, String> groupNames;
 	private ProfileManager profileManager;
 	private List<Page> pages;
+	private Sender sender;
 	
 	@Override
 	public void onCreate() {
 		allItems = new ArrayList<GlobalItem>();
 		groupNames = new HashMap<Integer, String>();
 		profileManager = new ProfileManager();
+		sender = new Sender();
 		super.onCreate();
 	}
 	
@@ -39,6 +41,10 @@ public class MyApplication extends Application {
 	
 	public List<Page> getPages() {
 		return pages;
+	}
+	
+	public Sender getSender() {
+		return sender;
 	}
 	
 	public List<GlobalItem> getFromType(int type) {

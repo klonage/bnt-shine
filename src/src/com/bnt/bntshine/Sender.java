@@ -13,6 +13,10 @@ public class Sender {
 	DataInputStream inputStream;
 	String address = "192.168.1.64";
 
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	public boolean sendToggleCommand(int group, int address, int type) {
 		if (!isConnected)
 			return false;
@@ -80,5 +84,9 @@ public class Sender {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean isConnected() {
+		return isConnected;
 	}
 }

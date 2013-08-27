@@ -5,8 +5,10 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,25 +54,28 @@ public class MainActivity extends Activity implements OnClickListener {
 		items.add(new GlobalItem("Urządzenie 6", 1, 6, 1, mainGridAdapter));
 		groups.put(0, "Grupa 0");
 		groups.put(1, "Grupa 1");
-		sender = new Sender();
+		sender = ((MyApplication) getApplication()).getSender();
 		init();		
 
-
-		EstabilishingConnectionTask estTask = new EstabilishingConnectionTask();
-		try {
-			estTask.execute(sender);
-			synchronized (estTask) {
-				estTask.wait(1000);
-			}
-			estTask.cancel(true);
-			if ( estTask.isConnected() ) {
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		sender.setAddress(preferences.getString("settings.network.ip", AppConfiguration.getDefaultIP()));
+		if (!sender.isConnected()) {
+			EstabilishingConnectionTask estTask = new EstabilishingConnectionTask();
+			try {
+				estTask.execute(sender);
+				synchronized (estTask) {
+					estTask.wait(2000);
+				}
+				estTask.cancel(true);
+				if ( estTask.isConnected() ) {
+					return;
+				} else {
+					Toast.makeText(this, "Przekroczono limit połączenia z serwerem.", Toast.LENGTH_LONG).show();
+				}
+			} catch (Exception e) {
+				Toast.makeText(this, "Nie udało się połączyć z serwerem.", Toast.LENGTH_LONG).show();
 				return;
-			} else {
-				Toast.makeText(this, "Przekroczono limit połączenia z serwerem.", Toast.LENGTH_LONG).show();
 			}
-		} catch (Exception e) {
-			Toast.makeText(this, "Nie udało się połączyć z serwerem.", Toast.LENGTH_LONG).show();
-			return;
 		}
 
 	}
