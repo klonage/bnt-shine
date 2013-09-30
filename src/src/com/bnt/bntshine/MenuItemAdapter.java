@@ -78,7 +78,7 @@ public class MenuItemAdapter extends ArrayAdapter<GlobalItem> {
         holder.icon.setImageDrawable(drawable);
         holder.cbox.setChecked(currItem.getOnBoard());
         holder.description.setText((currItem.getAddress()>=0 ? "Adres: " + currItem.getAddress() : "") +
-        		" Grupa: " + currItem.getGroup());
+        		(currItem.getGroup() >= 0 ? " Grupa: " + currItem.getGroup() : ""));
         return convertView;
 	}
 

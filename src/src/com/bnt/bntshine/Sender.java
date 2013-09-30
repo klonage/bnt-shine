@@ -41,6 +41,30 @@ public class Sender {
 		return true;
 	}
 	
+	public boolean sendCustomCommand(int group, int address, int type, int cmd) {
+		if (!isConnected)
+			return false;
+		
+		byte[] buffer = new byte[9];
+		buffer[0] = (byte) ((address == -1) ? 2 : 1);
+		buffer[1] = (byte) 9;
+		buffer[2] = (byte) address;
+		if (address == -1) {
+			type = type  / 4;
+		}
+		type = 10;
+		buffer[3] = (byte) (((type << 4) | (group & 0x0F)) & 0xFF);
+		buffer[4] = (byte) cmd;
+		buffer[5] = 0; buffer[6] = 0; buffer[7] = 0; buffer[8] = 0;
+		
+		try {
+			outputStream.write(buffer);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	
 	public boolean sendRoletaCommand(int cmd) {
 		if (!isConnected)
 			return false;

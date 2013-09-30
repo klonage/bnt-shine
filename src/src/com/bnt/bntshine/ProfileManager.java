@@ -204,7 +204,7 @@ public class ProfileManager {
 	private GlobalItem getGlobalItem(int address, int group, int type) {
 		List<GlobalItem> items = ((MyApplication) activity.getApplication()).getAllItems();
 
-		if (address == -1)
+		if (address == -1 && type != 16)
 			return getGroupItem(group, type);
 
 		for (GlobalItem item : items) {

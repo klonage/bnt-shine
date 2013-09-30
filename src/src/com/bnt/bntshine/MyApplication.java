@@ -48,7 +48,7 @@ public class MyApplication extends Application {
 	}
 	
 	public List<GlobalItem> getFromType(int type) {
-		if (type >= 4)
+		if (type >= 4 && type < 16)
 			return getGroups(type);
 		else
 			return getSingleDevices(type);

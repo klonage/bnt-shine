@@ -55,6 +55,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		items.add(new GlobalItem("Urządzenie 5", 0, 5, 1, mainGridAdapter));
 		items.add(new GlobalItem("Urządzenie 6", 1, 6, 1, mainGridAdapter));
 		items.add(new GlobalItem("Roleta w kuchni", 2, 10, 2, mainGridAdapter));
+		items.add(new GlobalItem("Testowa scena", -1, -1, 16, mainGridAdapter));
 		groups.put(0, "Grupa 0");
 		groups.put(1, "Grupa 1");
 		sender = ((MyApplication) getApplication()).getSender();
@@ -189,7 +190,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		if (currItem.getType() == 2) { // roleta, hacky guy!
 			generateRoletaDialog().show();
-		} else {		
+		} else if (currItem.getType() == 16) {
+			boolean isOk = true;
+			isOk = isOk && sender.sendRoletaCommand(10);
+			isOk = isOk && sender.sendCustomCommand(0, 1, 10, 2);
+			isOk = isOk && sender.sendCustomCommand(0, 2, 10, 2);
+			if (!isOk) {
+				Toast.makeText(this, "Nie można wysłać polecenia do serwera.", Toast.LENGTH_SHORT).show();
+			}
+		} else {
 			if (!sender.sendToggleCommand(currItem.getGroup(), currItem.getAddress(), currItem.getType())) {
 				Toast.makeText(this, "Nie można wysłać polecenia do serwera.", Toast.LENGTH_SHORT).show();
 			}

@@ -13,7 +13,7 @@ public class GlobalItem {
 	private static final String TYPE_NAME[];
 	
 	static {
-		ICONS = new int [9]; TYPE_NAME = new String[9];
+		ICONS = new int [17]; TYPE_NAME = new String[17];
 		
 		ICONS[1] = R.drawable.oswietlenie_on;
 		TYPE_NAME[1] = "Oświetlenie";
@@ -28,6 +28,9 @@ public class GlobalItem {
 		
 		ICONS[8] = R.drawable.zaluzja_up;
 		TYPE_NAME[8] = "Rolety";
+		
+		ICONS[16] = R.drawable.scena;
+		TYPE_NAME[16] = "Sceny";
 	}
 	
 	public GlobalItem(String name, int group, int address, int type, MainGridAdapter adapter) {

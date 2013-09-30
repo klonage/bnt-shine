@@ -61,7 +61,7 @@ public class MenuBranch {
 			MenuBranch.this.addGroupList();
 			break;
 		case 2:
-			Common.notImplementedFunctionAlert(activity);
+			MenuBranch.this.addSceneList();
 		}
 	}
 
@@ -108,6 +108,12 @@ public class MenuBranch {
 		}).show();
 	}
 
+	private void addSceneList() {
+		final List<GlobalItem> toShowItems = ((MyApplication)activity.getApplication()).getFromType(16);
+		
+		generateSelectionDialog(GlobalItem.getTypeName(16), toShowItems).show();
+	}
+	
 	private void manageSpecifiedDevices(int type) {
 		final List<GlobalItem> toShowItems = ((MyApplication)activity.getApplication()).getFromType(type);
 		
