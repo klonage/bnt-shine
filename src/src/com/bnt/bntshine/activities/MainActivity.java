@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -52,6 +54,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		items.add(new GlobalItem("Urządzenie 4", 0, 4, 1, mainGridAdapter));
 		items.add(new GlobalItem("Urządzenie 5", 0, 5, 1, mainGridAdapter));
 		items.add(new GlobalItem("Urządzenie 6", 1, 6, 1, mainGridAdapter));
+		items.add(new GlobalItem("Roleta w kuchni", 2, 10, 2, mainGridAdapter));
 		groups.put(0, "Grupa 0");
 		groups.put(1, "Grupa 1");
 		sender = ((MyApplication) getApplication()).getSender();
@@ -142,6 +145,39 @@ public class MainActivity extends Activity implements OnClickListener {
 		});
 	}
 
+	private AlertDialog generateRoletaDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Ustawienia rolety");
+		CharSequence [] seq = {"Otwórz roletę", "Skok w górę", "Skok w dół", "Zamknij roletę"};
+		builder.setItems(seq, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				boolean ok = true;
+				switch (which) {
+				case 0:
+					ok = sender.sendRoletaCommand(9);
+					break;
+				case 1:
+					ok = sender.sendRoletaCommand(12);
+					break;
+				case 2:
+					ok = sender.sendRoletaCommand(13);
+					break;
+				case 3:
+					ok = sender.sendRoletaCommand(10);
+					break;
+				}
+				
+				if (!ok) {
+					Toast.makeText(MainActivity.this, "Nie można wysłać polecenia do serwera.", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		AlertDialog dialog = builder.create();
+		dialog.setCanceledOnTouchOutside(true);
+		return dialog;
+	}
+	
 	@Override
 	public void onClick(View v) {
 		int it = gridview.getClickedItem();
@@ -151,8 +187,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (currItem == null)
 			return;
 
-		if (!sender.sendToggleCommand(currItem.getGroup(), currItem.getAddress(), currItem.getType())) {
-			Toast.makeText(this, "Nie można wysłać polecenia do serwera.", Toast.LENGTH_SHORT).show();
+		if (currItem.getType() == 2) { // roleta, hacky guy!
+			generateRoletaDialog().show();
+		} else {		
+			if (!sender.sendToggleCommand(currItem.getGroup(), currItem.getAddress(), currItem.getType())) {
+				Toast.makeText(this, "Nie można wysłać polecenia do serwera.", Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 

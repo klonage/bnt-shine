@@ -40,6 +40,26 @@ public class Sender {
 		}
 		return true;
 	}
+	
+	public boolean sendRoletaCommand(int cmd) {
+		if (!isConnected)
+			return false;
+		
+		byte[] buffer = new byte[9];
+		buffer[0] = (byte) 1;
+		buffer[1] = (byte) 9;
+		buffer[2] = (byte) 10;
+		buffer[3] = (byte) (((11 << 4) | (2 & 0x0F)) & 0xFF);
+		buffer[4] = (byte) cmd;
+		buffer[5] = 0; buffer[6] = 0; buffer[7] = 0; buffer[8] = 0;
+		
+		try {
+			outputStream.write(buffer);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
 
 	public boolean connect(int port) {
 		try {
