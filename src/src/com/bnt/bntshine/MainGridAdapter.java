@@ -78,7 +78,7 @@ public class MainGridAdapter implements PagedDragDropGridAdapter {
 		label.setMinHeight(65);
 		label.setTextSize(12);
 		label.setText(item.getUserName().equals("") ? item.getName() : item.getUserName());	
-		label.setTextColor(Color.BLACK);
+		label.setTextColor(Color.WHITE);
 		label.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
 	
 		label.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));

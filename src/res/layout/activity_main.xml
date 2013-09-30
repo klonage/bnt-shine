@@ -4,6 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_margin="-5dip"
+    android:background="@drawable/tlo"
+    android:color="@color/white"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -36,6 +38,7 @@
             android:drawableTop="@drawable/ustawienia"
             android:onClick="showSettingsActivityClick"
             android:text="ustawienia"
+            android:textColor="@android:color/white"
             android:textSize="12dp" />
         
         <Button
@@ -47,6 +50,7 @@
             android:drawableTop="@drawable/harmonogram"
             android:onClick="notImplementedFunctionClick"
             android:text="funkcje\nczasowe"
+            android:textColor="@android:color/white"
             android:textSize="12dp" />
         
          <Button
@@ -57,6 +61,7 @@
              android:background="@color/transparent"
              android:drawableTop="@drawable/scena"
              android:onClick="notImplementedFunctionClick"
+             android:textColor="@android:color/white"
              android:text="sceny"
              android:textSize="12dp" />
          
@@ -68,15 +73,10 @@
              android:background="@color/transparent"
              android:drawableTop="@drawable/global_off"
              android:onClick="doGlobalOffClick"
+             android:textColor="@android:color/white"
              android:text="wyłącz\nwszystko"
              android:textSize="12dp" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bnt_half" />
 
 </LinearLayout>
