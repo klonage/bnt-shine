@@ -11,5 +11,6 @@
     <string name="title_activity_help">HelpActivity</string>
     <string name="title_activity_global_off">GlobalOffActivity</string>
     <string name="title_activity_network">NetworkActivity</string>
+    <string name="removeItem">Usuń</string>
 
 </resources>
