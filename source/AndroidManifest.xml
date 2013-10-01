@@ -43,6 +43,10 @@
             android:name="pl.bntsystems.bntshine.activities.settings.GlobalOffActivity"
             android:label="@string/title_activity_global_off" >
         </activity>
+        <activity
+            android:name="pl.bntsystems.bntshine.activities.settings.NetworkActivity"
+            android:label="@string/title_activity_network" >
+        </activity>
     </application>
 
 </manifest>

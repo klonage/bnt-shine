@@ -10,5 +10,6 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_help">HelpActivity</string>
     <string name="title_activity_global_off">GlobalOffActivity</string>
+    <string name="title_activity_network">NetworkActivity</string>
 
 </resources>

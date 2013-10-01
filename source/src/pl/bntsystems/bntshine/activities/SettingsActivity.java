@@ -3,6 +3,7 @@ package pl.bntsystems.bntshine.activities;
 import pl.bntsystems.bntshine.R;
 import pl.bntsystems.bntshine.activities.settings.GlobalOffActivity;
 import pl.bntsystems.bntshine.activities.settings.HelpActivity;
+import pl.bntsystems.bntshine.activities.settings.NetworkActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -37,7 +38,8 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public void networkSettingsClick(View view) {
-		
+		Intent intent = new Intent(this, NetworkActivity.class);
+		startActivity(intent);
 	}
 
 	public void helpClick(View view) {
