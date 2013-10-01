@@ -6,20 +6,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SplashActivity" >
-	<TextView android:id="@+id/textView1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" 
-	    android:layout_alignParentTop="true" 
-	    android:layout_centerHorizontal="true" 
-	    android:layout_marginTop="170dp" 
-	    android:text="@string/trwa_wczytywanie_danych"/>
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleLarge"
+    tools:context=".MainActivity" >
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:text="@string/hello_world" />
 
 </RelativeLayout>
