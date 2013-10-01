@@ -4,9 +4,7 @@ import pl.bntsystems.bntshine.BntShineApplication;
 import pl.bntsystems.bntshine.R;
 import pl.bntsystems.bntshine.TCPClient;
 import pl.bntsystems.bntshine.TCPClient.OnConnectionStatusChanged;
-import pl.bntsystems.bntshine.activities.SettingsActivity;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,8 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
 
 public class NetworkActivity extends Activity implements OnConnectionStatusChanged {
 	private EditText ipAddressET;
