@@ -1,5 +1,6 @@
 package pl.bntsystems.bntshine.activities;
 
+import pl.bntsystems.bntshine.BntShineApplication;
 import pl.bntsystems.bntshine.R;
 import pl.bntsystems.bntshine.TCPClient;
 import pl.bntsystems.bntshine.TCPClient.OnConnectionStatusChanged;
@@ -10,13 +11,13 @@ import android.content.Intent;
 import android.view.Menu;
 
 public class LoaderActivity extends Activity implements OnConnectionStatusChanged {
-	private TCPClient client;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_loader);
 
-		new connectTask().execute(-1);
+		new ConnectTask().execute(-1);
 	}
 
 	@Override
@@ -33,12 +34,13 @@ public class LoaderActivity extends Activity implements OnConnectionStatusChange
 		LoaderActivity.this.finish();		
 	}
 	
-	public class connectTask extends AsyncTask<Integer,Integer,TCPClient> {
+	public class ConnectTask extends AsyncTask<Integer,Integer,TCPClient> {
 
 		@Override
 		protected TCPClient doInBackground(Integer... message) {
 
-			client = new TCPClient(LoaderActivity.this);
+			TCPClient client = ((BntShineApplication) getApplication()).getTCPClient();
+			client.setListener(LoaderActivity.this);
 			client.run();
 
 			return null;

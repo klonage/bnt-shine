@@ -10,15 +10,15 @@ import java.net.Socket;
 
 public class TCPClient {
 
-	public static final String SERVERIP = "192.168.1.109";
+	private String SERVERIP = "192.168.1.109";
 	public static final int SERVERPORT = 4444;
 	private OnConnectionStatusChanged statusChangedListener = null;
 	private boolean mRun = false;
 
-	PrintWriter out;
-	BufferedReader in;
+	private PrintWriter out;
+	private BufferedReader in;
 
-	public TCPClient(OnConnectionStatusChanged statusChangedListener) {
+	public void setListener(OnConnectionStatusChanged statusChangedListener) {
 		this.statusChangedListener = statusChangedListener;
 	}
 
@@ -43,22 +43,34 @@ public class TCPClient {
 			try {
 				out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 				in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				statusChangedListener.connectionStatusChanged(0);
+				
+				if (statusChangedListener != null)
+					statusChangedListener.connectionStatusChanged(0);
+				
 				while (mRun) {
 					in.readLine();
 				}
 			} catch (Exception e) {
-				statusChangedListener.connectionStatusChanged(1);
+				if (statusChangedListener != null) {
+					statusChangedListener.connectionStatusChanged(1);
+				}
 			} finally {
 				socket.close();
 			}
 
 		} catch (Exception e) {
-			statusChangedListener.connectionStatusChanged(2);
+			if (statusChangedListener != null) {
+				statusChangedListener.connectionStatusChanged(2);
+			}
 		}
 	}
 	
 	public interface OnConnectionStatusChanged {
 		public void connectionStatusChanged(int status);
+	}
+
+	public void setAddress(String ipAddress) {
+
+		SERVERIP = ipAddress;
 	}
 }
