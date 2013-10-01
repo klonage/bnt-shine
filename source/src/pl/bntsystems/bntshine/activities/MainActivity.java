@@ -1,5 +1,7 @@
 package pl.bntsystems.bntshine.activities;
 
+import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
+import pl.bntsystems.bntshine.MainGridAdapter;
 import pl.bntsystems.bntshine.R;
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,11 +12,20 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+	private PagedDragDropGrid gridview;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		checkConnectionStatus();
+		
+ 		gridview = (PagedDragDropGrid) findViewById(R.id.gridview);
+		gridview.setAdapter(new MainGridAdapter(this));
+	}
+
+	private void checkConnectionStatus() {
 		int status = getIntent().getIntExtra("connectionStatus", 0);
 		
 		if (status > 0) {
