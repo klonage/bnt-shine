@@ -1,6 +1,7 @@
 package pl.bntsystems.bntshine.activities;
 
 import pl.bntsystems.bntshine.R;
+import pl.bntsystems.bntshine.activities.settings.GlobalOffActivity;
 import pl.bntsystems.bntshine.activities.settings.HelpActivity;
 import android.os.Bundle;
 import android.app.Activity;
@@ -31,7 +32,8 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public void globalOffClick(View view) {
-		
+		Intent intent = new Intent(this, GlobalOffActivity.class);
+		startActivity(intent);
 	}
 	
 	public void networkSettingsClick(View view) {

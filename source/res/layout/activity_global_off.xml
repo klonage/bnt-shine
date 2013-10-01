@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tlo"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".GlobalOffActivity" >
+
+    <TextView
+            android1:id="@+id/textView1"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_marginBottom="30dp"
+            android1:textColor="@color/white"
+            android1:text="WYBIERZ SPOSÓB AUTORYZACJI GLOBAL OFF"
+            android1:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <RadioGroup
+        android1:id="@+id/authMethodRadioGroup"
+        android1:layout_width="fill_parent"
+        android1:layout_height="wrap_content" >
+
+        <RadioButton
+            android1:id="@+id/windowRadio"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_marginBottom="10dp"
+            android1:layout_marginTop="10dp"
+            android1:checked="true"
+            android1:text="OKIENKO Z POTWIERDZENIEM"
+            android1:textColor="@color/white" />
+
+        <RadioButton
+            android1:id="@+id/symbolRadio"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_marginBottom="10dp"
+            android1:layout_marginTop="10dp"
+            android1:enabled="false"
+            android1:text="SYMBOL"
+            android1:textColor="@color/white" />
+
+        <RadioButton
+            android1:id="@+id/longTapRadio"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_marginBottom="10dp"
+            android1:layout_marginTop="10dp"
+            android1:text="PRZYTRZYMANIE PRZYCISKU PRZEZ 3 SEKUNDY"
+            android1:textColor="@color/white" />
+        
+        <RadioButton
+            android1:id="@+id/passRadio"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_marginBottom="10dp"
+            android1:layout_marginTop="10dp"
+            android1:text="HASŁO"
+            android1:textColor="@color/white" />
+
+    </RadioGroup>
+
+    <EditText
+        android1:id="@+id/passEditText"
+        android1:layout_width="fill_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_marginLeft="30dp"
+        android1:singleLine="true"
+        android1:background="@color/black"
+        android1:enabled="false"
+        android1:textColor="@color/white" />
+
+</LinearLayout>
