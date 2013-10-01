@@ -4,7 +4,10 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" /> 
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -31,6 +34,10 @@
         <activity
             android:name="pl.bntsystems.bntshine.activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="pl.bntsystems.bntshine.activities.settings.HelpActivity"
+            android:label="@string/title_activity_help" >
         </activity>
     </application>
 

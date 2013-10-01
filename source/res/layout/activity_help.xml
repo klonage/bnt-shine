@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/tlo"
+    tools:context=".HelpActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:contentDescription="BNT SYSTEMS"
+            android:src="@drawable/bnt_full" />
+
+        <Button
+            android:id="@+id/Anuluj"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:onClick="openCalcActivityClick"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"
+            android:layout_weight="1"
+            android:text="CALC" />
+
+        <Button
+            android:id="@+id/okFileDialogButton"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="callToSupportClick"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"
+            android:text="ZADZWOŃ DO KONSULTANTA" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="sendMailClick"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"
+            android:text="WYŚLIJ MAIL" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="openWWWPageClick"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"
+            android:text="STRONA WWW" />
+
+    </LinearLayout>
+
+</RelativeLayout>

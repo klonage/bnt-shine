@@ -16,6 +16,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
+        android:onClick="namesClick"
         android:textColor="@color/white"
         android:text="NAZWY" />
 
@@ -25,6 +26,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
+        android:onClick="profilesClick"
         android:textColor="@color/white"
         android:text="PROFILE" />
 
@@ -34,6 +36,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
+        android:onClick="globalOffClick"
         android:textColor="@color/white"
         android:text="OPCJE GLOBAL OFF" />
 
@@ -43,6 +46,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
+        android:onClick="networkSettingsClick"
         android:textColor="@color/white"
         android:text="USTAWIENIA SIECIOWE" />
 
@@ -52,6 +56,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
+        android:onClick="helpClick"
         android:textColor="@color/white"
         android:text="POMOC" />
 
