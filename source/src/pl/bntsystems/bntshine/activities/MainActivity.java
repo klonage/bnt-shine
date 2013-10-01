@@ -3,7 +3,9 @@ package pl.bntsystems.bntshine.activities;
 import pl.bntsystems.bntshine.R;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -26,4 +28,9 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	public void showSettingsActivityClick(View view) {
+		Intent intent = new Intent(this, SettingsActivity.class);
+
+		startActivity(intent);
+	}
 }

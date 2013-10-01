@@ -7,5 +7,6 @@
     <string name="trwa_wczytywanie_danych">Trwa wczytywanie danych</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="ustawienia">ustawienia</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>
