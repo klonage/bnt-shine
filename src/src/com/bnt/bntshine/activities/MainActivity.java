@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import ca.laplanete.mobile.pageddragdropgrid.PagedDragDropGrid;
 
@@ -43,6 +44,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 
 		createMainGrid();
+		LinearLayout mLayout = (LinearLayout)findViewById(R.id.bottomMenuLayout);
+		mLayout.setPadding(20, 20, 20, 20);
 
 		// TODO: sample data
 		List<GlobalItem> items = ((MyApplication) getApplication()).getAllItems();
