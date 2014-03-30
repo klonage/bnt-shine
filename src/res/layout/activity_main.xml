@@ -23,12 +23,10 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/bottomMenuLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center|bottom"
-        android:background="#a6a8ab"
         android:orientation="horizontal" >
 
         <Button
